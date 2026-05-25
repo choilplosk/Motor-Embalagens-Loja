@@ -31,35 +31,19 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--text); font-family: 'Bricolage Grotesque', sans-serif; min-height: 100vh; font-size: 14px; }
 
-/* LAYOUT */
 .app { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
 
 /* SIDEBAR */
-.sidebar {
-  background: var(--accent);
-  padding: 0;
-  display: flex; flex-direction: column;
-  position: sticky; top: 0; height: 100vh;
-}
-.sidebar-logo {
-  padding: 24px 20px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
+.sidebar { background: var(--accent); padding: 0; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+.sidebar-logo { padding: 24px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .sidebar-logo .brand { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: .15em; text-transform: uppercase; font-family: 'DM Mono', monospace; margin-bottom: 4px; }
 .sidebar-logo .title { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.2; }
 .sidebar-logo .title span { color: #a8d5b5; }
-
 .sidebar-section { padding: 20px 12px 8px; font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: .12em; font-family: 'DM Mono', monospace; }
-.nav-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 16px; margin: 2px 8px; border-radius: 8px;
-  cursor: pointer; color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500;
-  transition: all .15s; border: none; background: none; width: calc(100% - 16px); text-align: left;
-}
+.nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 16px; margin: 2px 8px; border-radius: 8px; cursor: pointer; color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; transition: all .15s; border: none; background: none; width: calc(100% - 16px); text-align: left; }
 .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
 .nav-item.active { background: rgba(255,255,255,0.15); color: #fff; }
 .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
-
 .sidebar-bottom { margin-top: auto; padding: 16px 12px; border-top: 1px solid rgba(255,255,255,0.1); }
 .api-status { font-size: 11px; font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 6px; }
 .api-dot { width: 6px; height: 6px; border-radius: 50%; background: #f39c12; }
@@ -67,15 +51,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Bricolage Grotes
 
 /* MAIN */
 .main { overflow-y: auto; }
-.topbar {
-  background: var(--surface); border-bottom: 1px solid var(--border);
-  padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; z-index: 10;
-}
+.topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
 .topbar-title { font-size: 18px; font-weight: 700; }
 .topbar-sub { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; margin-top: 2px; }
 .topbar-actions { display: flex; gap: 10px; align-items: center; }
-
 .content { padding: 28px 32px; }
 
 /* PAGES */
@@ -85,10 +64,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Bricolage Grotes
 
 /* CARDS */
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 14px; margin-bottom: 24px; }
-.kpi {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  padding: 18px 20px;
-}
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
 .kpi .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-family: 'DM Mono', monospace; margin-bottom: 8px; }
 .kpi .kpi-val { font-size: 26px; font-weight: 800; line-height: 1; }
 .kpi .kpi-sub { font-size: 12px; color: var(--muted); margin-top: 5px; }
@@ -122,6 +98,7 @@ tr:hover td { background: var(--surface2); }
 .badge.info { background:var(--info-light); color:var(--info); border:1px solid #aed6f1; }
 .badge.neutral { background:var(--surface2); color:var(--muted); border:1px solid var(--border); }
 .badge.gold { background:var(--gold-light); color:var(--gold); border:1px solid #f0d080; }
+.badge.corr { background:#f0e6ff; color:#6b21a8; border:1px solid #d8b4fe; }
 
 /* BUTTONS */
 .btn { padding:9px 18px; border-radius:8px; font-family:'Bricolage Grotesque',sans-serif; font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all .15s; }
@@ -148,12 +125,7 @@ tr:hover td { background: var(--surface2); }
 .alert .alert-body { font-size:12px; color:var(--muted); line-height:1.5; }
 
 /* UPLOAD */
-.upload-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
-.upload-zone {
-  border:2px dashed var(--border2); border-radius:10px; padding:20px 16px;
-  text-align:center; cursor:pointer; transition:all .2s; position:relative;
-  background:var(--surface);
-}
+.upload-zone { border:2px dashed var(--border2); border-radius:10px; padding:20px 16px; text-align:center; cursor:pointer; transition:all .2s; position:relative; background:var(--surface); }
 .upload-zone:hover { border-color:var(--accent); background:var(--accent-light); }
 .upload-zone.loaded { border-style:solid; border-color:#a8d5b5; background:var(--ok-light); }
 .upload-zone input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; }
@@ -188,10 +160,7 @@ tr:hover td { background: var(--surface2); }
 .saz-card h4 { font-size:14px; font-weight:700; margin-bottom:14px; }
 .field { margin-bottom:12px; }
 .field label { display:block; font-size:11px; font-family:'DM Mono',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px; }
-.field input, .field select {
-  width:100%; padding:9px 12px; border:1px solid var(--border2); border-radius:7px;
-  font-family:'DM Mono',monospace; font-size:13px; background:var(--surface); color:var(--text);
-}
+.field input, .field select { width:100%; padding:9px 12px; border:1px solid var(--border2); border-radius:7px; font-family:'DM Mono',monospace; font-size:13px; background:var(--surface); color:var(--text); }
 .field input:focus, .field select:focus { outline:none; border-color:var(--accent); }
 
 /* SETTINGS */
@@ -218,41 +187,23 @@ tr:hover td { background: var(--surface2); }
 .mini-track { flex:1; height:5px; background:var(--surface2); border-radius:3px; overflow:hidden; }
 .mini-fill { height:100%; background:var(--accent); border-radius:3px; }
 
-/* CONSOLIDADO */
-.loja-row-expand { background:var(--surface2); }
-.loja-row-expand td { padding:12px 14px; font-size:12px; }
+/* MIX BADGE */
+.mix-pill { display:inline-flex; gap:4px; align-items:center; font-size:10px; font-family:'DM Mono',monospace; }
+.mix-pill span { padding:2px 6px; border-radius:10px; }
+.mix-pill .pp { background:#f0e6ff; color:#6b21a8; }
+.mix-pill .p  { background:#dbeafe; color:#1e40af; }
+.mix-pill .m  { background:#fef9e7; color:#92400e; }
 
-/* RESPONSIVE */
+/* TOAST */
+.toast { position:fixed; bottom:28px; right:28px; z-index:9999; background:var(--accent); color:#fff; padding:14px 20px; border-radius:10px; font-size:13px; font-weight:500; line-height:1.4; display:flex; align-items:flex-start; gap:12px; box-shadow:0 4px 20px rgba(0,0,0,0.18); max-width:360px; transform:translateY(80px); opacity:0; transition:all .3s cubic-bezier(.34,1.56,.64,1); pointer-events:none; }
+.toast.show { transform:translateY(0); opacity:1; }
+.toast.error { background:var(--danger); }
+.toast.warn  { background:var(--warn); }
+.toast .toast-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+.toast .toast-body .toast-title { font-weight:700; margin-bottom:2px; }
+.toast .toast-body .toast-sub { font-size:12px; opacity:.85; }
+
 @media(max-width:900px){ .app{grid-template-columns:1fr} .sidebar{display:none} }
-
-/* TOAST NOTIFICATION */
-.toast {
-  position: fixed; bottom: 28px; right: 28px; z-index: 9999;
-  background: var(--accent); color: #fff;
-  padding: 14px 20px; border-radius: 10px;
-  font-size: 13px; font-weight: 500; line-height: 1.4;
-  display: flex; align-items: flex-start; gap: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-  max-width: 360px;
-  transform: translateY(80px); opacity: 0;
-  transition: all .3s cubic-bezier(.34,1.56,.64,1);
-  pointer-events: none;
-}
-.toast.show { transform: translateY(0); opacity: 1; }
-.toast.error { background: var(--danger); }
-.toast.warn  { background: var(--warn); }
-.toast .toast-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.toast .toast-body .toast-title { font-weight: 700; margin-bottom: 2px; }
-.toast .toast-body .toast-sub { font-size: 12px; opacity: .85; }
-
-/* UPLOAD STATUS BAR */
-.upload-status {
-  background: var(--accent-light); border: 1px solid #a8d5b5;
-  border-radius: 8px; padding: 10px 16px; margin-bottom: 16px;
-  font-size: 12px; color: var(--accent); font-family: 'DM Mono', monospace;
-  display: none;
-}
-.upload-status.visible { display: block; }
 </style>
 </head>
 <body>
@@ -264,25 +215,19 @@ tr:hover td { background: var(--surface2); }
     <div class="brand">O Boticário</div>
     <div class="title">Gestão de<br><span>Embalagens</span></div>
   </div>
-
   <div class="sidebar-section">Visão Geral</div>
   <button class="nav-item active" onclick="showPage('dashboard',this)"><span class="icon">◉</span> Dashboard</button>
   <button class="nav-item" onclick="showPage('consolidado',this)"><span class="icon">⊞</span> Consolidado</button>
-
   <div class="sidebar-section">Operacional</div>
   <button class="nav-item" onclick="showPage('pedido',this)"><span class="icon">◈</span> Pedido Mensal</button>
   <button class="nav-item" onclick="showPage('bipagem',this)"><span class="icon">◎</span> Bipagem</button>
   <button class="nav-item" onclick="showPage('estoque',this)"><span class="icon">▦</span> Estoque</button>
-
   <div class="sidebar-section">Planejamento</div>
   <button class="nav-item" onclick="showPage('sazonais',this)"><span class="icon">◇</span> Datas Sazonais</button>
-
   <button class="nav-item" onclick="showPage('clique',this)"><span class="icon">🛍</span> Clique e Retire</button>
-
   <div class="sidebar-section">Sistema</div>
   <button class="nav-item" onclick="showPage('upload',this)"><span class="icon">↑</span> Upload de Dados</button>
   <button class="nav-item" onclick="showPage('config',this)"><span class="icon">⚙</span> Configurações</button>
-
   <div class="sidebar-bottom">
     <div class="api-status">
       <div class="api-dot" id="api-dot"></div>
@@ -316,7 +261,7 @@ tr:hover td { background: var(--surface2); }
 
   <div class="content">
 
-    <!-- ======= DASHBOARD ======= -->
+    <!-- DASHBOARD -->
     <div id="page-dashboard" class="page active">
       <div class="cards-grid" id="dash-kpis"></div>
       <div class="ai-box" id="ai-dashboard">
@@ -335,7 +280,7 @@ tr:hover td { background: var(--surface2); }
       </div>
     </div>
 
-    <!-- ======= CONSOLIDADO ======= -->
+    <!-- CONSOLIDADO -->
     <div id="page-consolidado" class="page">
       <div class="cards-grid" id="cons-kpis"></div>
       <div class="card">
@@ -344,12 +289,12 @@ tr:hover td { background: var(--surface2); }
           <button class="btn btn-secondary btn-sm" onclick="exportarConsolidado()">Exportar CSV</button>
         </div>
         <table>
-          <thead><tr><th>Loja</th><th>Fat. médio/mês</th><th>Limite 1%</th><th>Pedido sugerido</th><th>% limite</th><th>Saldos negativos</th><th>Bipagem</th><th>Status</th></tr></thead>
+          <thead><tr><th>Loja</th><th>Fat. médio/mês</th><th>Limite 1%</th><th>Pedido sugerido</th><th>% limite</th><th>Saldos negativos</th><th>Mix calibrado</th><th>Status</th></tr></thead>
           <tbody id="cons-table"></tbody>
           <tfoot><tr class="tfoot-row" id="cons-tfoot"></tr></tfoot>
         </table>
       </div>
-      <div class="ai-box" id="ai-consolidado">
+      <div class="ai-box">
         <div class="ai-header">
           <div class="ai-icon">✦</div>
           <div><div class="ai-title">Análise Consolidada da Franquia</div><div class="ai-sub">Comparativo entre lojas e recomendações</div></div>
@@ -358,8 +303,15 @@ tr:hover td { background: var(--surface2); }
       </div>
     </div>
 
-    <!-- ======= PEDIDO ======= -->
+    <!-- PEDIDO -->
     <div id="page-pedido" class="page">
+      <div class="alert info">
+        <div class="alert-icon">ℹ</div>
+        <div>
+          <div class="alert-title">Motor de compra por correlação produto × embalagem</div>
+          <div class="alert-body">O consumo de sacolas (PP, P, M) é calculado pelo volume de vendas × mix calibrado individualmente para cada loja. Caixas de presente mantêm o cálculo anterior. A bipagem é monitorada separadamente.</div>
+        </div>
+      </div>
       <div class="loja-tabs" id="pedido-loja-tabs"></div>
       <div class="cards-grid" id="pedido-kpis"></div>
       <div id="pedido-orc-card" class="card" style="margin-bottom:20px;">
@@ -382,9 +334,9 @@ tr:hover td { background: var(--surface2); }
           </div>
         </div>
         <table>
-          <thead><tr><th>Código</th><th>Embalagem</th><th>Estoque</th><th>Bipagem/mês</th><th>C&R/mês</th><th>Total/mês</th><th>Necessidade 40d</th><th>Qtd sugerida</th><th>Módulos</th><th>Valor</th><th>Status</th></tr></thead>
+          <thead><tr><th>Código</th><th>Embalagem</th><th>Estoque atual</th><th>Consumo/mês</th><th>C&R/mês</th><th>Total/mês</th><th>Necessidade 40d</th><th>Qtd sugerida</th><th>Módulos</th><th>Valor</th><th>Fonte</th><th>Status</th></tr></thead>
           <tbody id="pedido-table"></tbody>
-          <tfoot><tr class="tfoot-row"><td colspan="7" style="text-align:right;padding-right:14px;">TOTAL</td><td id="pedido-tfoot-val">—</td><td></td></tr></tfoot>
+          <tfoot><tr class="tfoot-row"><td colspan="9" style="text-align:right;padding-right:14px;">TOTAL</td><td id="pedido-tfoot-val">—</td><td colspan="2"></td></tr></tfoot>
         </table>
       </div>
       <div class="ai-box">
@@ -396,8 +348,15 @@ tr:hover td { background: var(--surface2); }
       </div>
     </div>
 
-    <!-- ======= BIPAGEM ======= -->
+    <!-- BIPAGEM -->
     <div id="page-bipagem" class="page">
+      <div class="alert warn">
+        <div class="alert-icon">⚠</div>
+        <div>
+          <div class="alert-title">Bipagem como métrica de acompanhamento</div>
+          <div class="alert-body">A bipagem não é mais usada no cálculo do pedido. Ela permanece aqui para monitorar a evolução da cultura de registro nas lojas. Meta: atingir 80% de cobertura.</div>
+        </div>
+      </div>
       <div class="loja-tabs" id="bipagem-loja-tabs"></div>
       <div class="cards-grid" id="bip-kpis"></div>
       <div class="card" style="margin-bottom:20px;">
@@ -407,20 +366,20 @@ tr:hover td { background: var(--surface2); }
           <div style="display:flex;gap:8px;margin-top:6px;" id="bip-chart-labels"></div>
         </div>
         <table>
-          <thead><tr><th>Mês</th><th>Itens vendidos</th><th>Bipagens</th><th>% Bipagem</th><th>Sacola PP</th><th>Sacola P</th><th>Sacola M</th><th>Sacola G</th><th>Caixa P</th><th>Caixa M</th><th>Caixa G</th><th>Status</th></tr></thead>
+          <thead><tr><th>Mês</th><th>Itens vendidos</th><th>Bipagens</th><th>% Bipagem</th><th>Status</th></tr></thead>
           <tbody id="bip-table"></tbody>
         </table>
       </div>
       <div class="ai-box">
         <div class="ai-header">
           <div class="ai-icon">✦</div>
-          <div><div class="ai-title">Análise de Bipagem</div><div class="ai-sub">IA identifica padrões e recomenda ações</div></div>
+          <div><div class="ai-title">Análise de Bipagem</div><div class="ai-sub">IA identifica padrões e recomenda ações para evolução</div></div>
         </div>
         <div class="ai-content" id="ai-bipagem-text">Clique em "Analisar com IA" para obter análise da cultura de bipagem e recomendações.</div>
       </div>
     </div>
 
-    <!-- ======= ESTOQUE ======= -->
+    <!-- ESTOQUE -->
     <div id="page-estoque" class="page">
       <div class="loja-tabs" id="estoque-loja-tabs"></div>
       <div id="estoque-alertas"></div>
@@ -440,7 +399,7 @@ tr:hover td { background: var(--surface2); }
       </div>
     </div>
 
-    <!-- ======= SAZONAIS ======= -->
+    <!-- SAZONAIS -->
     <div id="page-sazonais" class="page">
       <div class="alert info"><div class="alert-icon">ℹ</div><div><div class="alert-title">Módulo em calibração</div><div class="alert-body">A precisão das sugestões aumentará conforme você registrar os resultados reais de cada data. A IA usará o histórico de vendas para calibrar as estimativas.</div></div></div>
       <div class="saz-grid" id="saz-grid"></div>
@@ -453,8 +412,7 @@ tr:hover td { background: var(--surface2); }
       </div>
     </div>
 
-
-    <!-- ======= CLIQUE E RETIRE ======= -->
+    <!-- CLIQUE E RETIRE -->
     <div id="page-clique" class="page">
       <div class="loja-tabs" id="clique-loja-tabs"></div>
       <div class="cards-grid" id="clique-kpis"></div>
@@ -475,17 +433,7 @@ tr:hover td { background: var(--surface2); }
           </div>
         </div>
         <table>
-          <thead>
-            <tr>
-              <th>Embalagem</th>
-              <th>Código</th>
-              <th>Cupons no período</th>
-              <th>Dias analisados</th>
-              <th>Estimativa/mês</th>
-              <th>% do consumo total</th>
-              <th>Impacto no pedido</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Embalagem</th><th>Código</th><th>Cupons no período</th><th>Dias analisados</th><th>Estimativa/mês</th><th>% do consumo total</th><th>Impacto no pedido</th></tr></thead>
           <tbody id="clique-table"></tbody>
           <tfoot><tr class="tfoot-row" id="clique-tfoot"></tr></tfoot>
         </table>
@@ -493,27 +441,22 @@ tr:hover td { background: var(--surface2); }
       <div class="card">
         <div class="card-header"><h3>Upload do relatório de cupons</h3></div>
         <div class="card-body">
-          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-            Faça upload do <strong>relatorioDeCupom.csv</strong> para calcular o consumo estimado de embalagens do canal Clique e Retire. O sistema aplica automaticamente as regras de correlação produto → embalagem aprovadas.
-          </p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Faça upload do <strong>relatorioDeCupom.csv</strong> para calcular o consumo estimado de embalagens do canal Clique e Retire.</p>
           <div id="clique-upload-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;"></div>
         </div>
       </div>
       <div class="ai-box">
         <div class="ai-header">
           <div class="ai-icon">✦</div>
-          <div>
-            <div class="ai-title">Análise Clique e Retire</div>
-            <div class="ai-sub">IA analisa o padrão do canal e impacto no pedido</div>
-          </div>
+          <div><div class="ai-title">Análise Clique e Retire</div><div class="ai-sub">IA analisa o padrão do canal e impacto no pedido</div></div>
         </div>
         <div class="ai-content" id="ai-clique-text">Clique em "Analisar com IA" para obter análise do canal Clique e Retire e seu impacto no consumo de embalagens.</div>
       </div>
     </div>
 
-    <!-- ======= UPLOAD ======= -->
+    <!-- UPLOAD -->
     <div id="page-upload" class="page">
-      <div class="alert info"><div class="alert-icon">ℹ</div><div><div class="alert-title">Ciclos de atualização</div><div class="alert-body">Histórico de vendas e estoque: atualizar mensalmente para recalcular o pedido. Para monitoramento semanal de bipagem, atualize apenas o histórico de vendas da semana.</div></div></div>
+      <div class="alert info"><div class="alert-icon">ℹ</div><div><div class="alert-title">Ciclos de atualização</div><div class="alert-body">Faça upload do relatório ABC de vendas mensalmente para recalibrar o mix e o volume de cada loja. O estoque deve ser inserido no momento da compra para garantir precisão no pedido.</div></div></div>
       <div class="card">
         <div class="card-header"><h3>Upload por loja</h3></div>
         <div class="card-body" id="upload-body"></div>
@@ -521,12 +464,12 @@ tr:hover td { background: var(--surface2); }
       <div class="card">
         <div class="card-header"><h3>Catálogo de embalagens</h3><span class="badge ok">Carregado</span></div>
         <div class="card-body">
-          <p style="font-size:13px;color:var(--muted);">O catálogo de embalagens com preços e módulos está carregado. Para atualizar quando houver mudança de preços da indústria, faça upload de um novo arquivo CSV com as colunas: <span style="font-family:'DM Mono',monospace;font-size:11px;">Código;Descrição;Pç. Por Módulo;V. Unit.</span></p>
+          <p style="font-size:13px;color:var(--muted);">O catálogo de embalagens com preços e módulos está carregado. Para atualizar, faça upload de um novo CSV com as colunas: <span style="font-family:'DM Mono',monospace;font-size:11px;">Código;Descrição;Pç. Por Módulo;V. Unit.</span></p>
           <div style="margin-top:14px;">
             <div class="upload-zone" style="max-width:300px;text-align:left;padding:14px 16px;">
               <input type="file" accept=".csv,.xlsx" onchange="uploadCatalogo(this)">
               <div style="display:flex;align-items:center;gap:10px;">
-                <span style="font-size:20px;">ð·</span>
+                <span style="font-size:20px;">📦</span>
                 <div><div class="uz-title">Atualizar catálogo</div><div class="uz-sub">CSV ou XLSX</div></div>
               </div>
             </div>
@@ -535,7 +478,7 @@ tr:hover td { background: var(--surface2); }
       </div>
     </div>
 
-    <!-- ======= CONFIG ======= -->
+    <!-- CONFIG -->
     <div id="page-config" class="page">
       <div class="settings-section">
         <h3>API de Inteligência Artificial</h3>
@@ -570,18 +513,22 @@ tr:hover td { background: var(--surface2); }
         </div>
       </div>
       <div class="settings-section">
+        <h3>Mix calibrado por loja</h3>
+        <div id="mix-config-table"></div>
+      </div>
+      <div class="settings-section">
         <h3>Lojas cadastradas</h3>
         <div id="lojas-config-table"></div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /main -->
-</div><!-- /app -->
+  </div>
+</div>
+</div>
 
 <script>
 // ============================================================
-// DADOS BASE
+// CATÁLOGO
 // ============================================================
 const CATALOGO = [
   { cod:'90819', desc:'Sacola PP', tipo:'sacola', qtdMod:300, valMod:212.10, valUnit:0.707 },
@@ -593,34 +540,73 @@ const CATALOGO = [
   { cod:'89397', desc:'Caixa G',   tipo:'caixa',  qtdMod:50,  valMod:549.00, valUnit:10.98 },
 ];
 
+// ============================================================
+// MIX CALIBRADO POR LOJA
+// Fonte: análise do relatório ABC de vendas jan–mai/2026
+// PP/P/M = % do volume de itens vendidos que gera cada sacola
+// Fator de tendência = crescimento recente vs período anterior
+// ============================================================
+const MIX_LOJAS = {
+  '6696':  { pp:33, p:50, m:17, vol_base:10363, fator_tend:1.206, fonte:'Histórico jan–mai/26' },
+  '7253':  { pp:38, p:47, m:16, vol_base:1860,  fator_tend:1.093, fonte:'Histórico jan–mai/26' },
+  '7473':  { pp:37, p:44, m:19, vol_base:3434,  fator_tend:1.155, fonte:'Histórico jan–mai/26' },
+  '7842':  { pp:36, p:46, m:18, vol_base:3740,  fator_tend:1.246, fonte:'Histórico jan–mai/26' },
+  '8184':  { pp:33, p:50, m:18, vol_base:2546,  fator_tend:1.124, fonte:'Histórico jan–mai/26' },
+  '13789': { pp:37, p:47, m:16, vol_base:2951,  fator_tend:1.175, fonte:'Histórico jan–mai/26' },
+  '17626': { pp:38, p:44, m:18, vol_base:2510,  fator_tend:1.214, fonte:'Histórico jan–mai/26' },
+  '18682': { pp:31, p:52, m:17, vol_base:4890,  fator_tend:1.258, fonte:'Histórico jan–mai/26' },
+};
+
+// Mapa código sacola → chave mix
+const COD_SACOLA_MIX = { '90819':'pp', '90821':'p', '90822':'m' };
+
+// ============================================================
+// CALCULAR CONSUMO POR CORRELAÇÃO
+// Retorna consumo mensal estimado de PP, P, M para cada loja
+// Fórmula: vol_base × fator_tendência × mix%
+// ============================================================
+function calcConsumoCorrelacao(lojaId) {
+  const mx = MIX_LOJAS[lojaId];
+  if (!mx) return { '90819':0, '90821':0, '90822':0 };
+  const vol = mx.vol_base * mx.fator_tend;
+  return {
+    '90819': Math.round(vol * mx.pp / 100),  // Sacola PP
+    '90821': Math.round(vol * mx.p  / 100),  // Sacola P
+    '90822': Math.round(vol * mx.m  / 100),  // Sacola M
+  };
+}
+
+// ============================================================
+// DADOS BASE DAS LOJAS
+// ============================================================
 const LOJAS_BASE = {
   '6696':  { nome:'Loja 6696',  meta:662435, fat_jan:670121, fat_fev:552847, fat_mar:764336,
              estoque:{'90819':1299,'90821':4102,'90822':2677,'90823':-26,'89402':290,'89401':519,'89397':0},
-             consumo:{'90819':38,'90821':124,'90822':65,'90823':5,'89402':35.3,'89401':142.3,'89397':0} },
+             consumo_caixas:{'89402':35.3,'89401':142.3,'89397':0} },
   '7253':  { nome:'Loja 7253',  meta:95509,  fat_jan:103356, fat_fev:78424,  fat_mar:104748,
              estoque:{'90819':3408,'90821':940,'90822':2235,'90823':399,'89402':0,'89401':-66,'89397':0},
-             consumo:{'90819':12,'90821':12.3,'90822':0,'90823':0,'89402':0,'89401':20.3,'89397':0} },
+             consumo_caixas:{'89402':0,'89401':20.3,'89397':0} },
   '7473':  { nome:'Loja 7473',  meta:192541, fat_jan:189609, fat_fev:162661, fat_mar:225353,
              estoque:{'90819':2808,'90821':1687,'90822':1502,'90823':700,'89402':120,'89401':16,'89397':0},
-             consumo:{'90819':26.7,'90821':23.3,'90822':5,'90823':0,'89402':6,'89401':59.3,'89397':0} },
+             consumo_caixas:{'89402':6,'89401':59.3,'89397':0} },
   '7842':  { nome:'Loja 7842',  meta:232199, fat_jan:217520, fat_fev:194634, fat_mar:284443,
              estoque:{'90819':2563,'90821':1475,'90822':2627,'90823':-7,'89402':-51,'89401':50,'89397':0},
-             consumo:{'90819':16.3,'90821':60.7,'90822':25.7,'90823':1.3,'89402':13.7,'89401':73.7,'89397':0} },
+             consumo_caixas:{'89402':13.7,'89401':73.7,'89397':0} },
   '8184':  { nome:'Loja 8184',  meta:160617, fat_jan:158702, fat_fev:133145, fat_mar:190005,
              estoque:{'90819':853,'90821':-24,'90822':0,'90823':0,'89402':449,'89401':248,'89397':0},
-             consumo:{'90819':4,'90821':7.7,'90822':0,'90823':0,'89402':0.3,'89401':7.3,'89397':0} },
+             consumo_caixas:{'89402':0.3,'89401':7.3,'89397':0} },
   '13789': { nome:'Loja 13789', meta:163391, fat_jan:154467, fat_fev:141543, fat_mar:194164,
              estoque:{'90819':4868,'90821':4591,'90822':2305,'90823':483,'89402':68,'89401':92,'89397':0},
-             consumo:{'90819':44.3,'90821':104.3,'90822':16.3,'90823':4.7,'89402':23.7,'89401':50.7,'89397':0} },
+             consumo_caixas:{'89402':23.7,'89401':50.7,'89397':0} },
   '17626': { nome:'Loja 17626', meta:146640, fat_jan:133724, fat_fev:133323, fat_mar:172872,
              estoque:{'90819':4467,'90821':6025,'90822':3521,'90823':398,'89402':0,'89401':595,'89397':0},
-             consumo:{'90819':5.7,'90821':27.3,'90822':19.3,'90823':0,'89402':0,'89401':1,'89397':0} },
+             consumo_caixas:{'89402':0,'89401':1,'89397':0} },
   '18682': { nome:'Loja 18682', meta:320764, fat_jan:280620, fat_fev:292496, fat_mar:389175,
              estoque:{'90819':-64,'90821':-187,'90822':-93,'90823':-25,'89402':-230,'89401':83,'89397':0},
-             consumo:{'90819':4.7,'90821':4,'90822':10.7,'90823':1,'89402':63.7,'89401':106.7,'89397':0} },
+             consumo_caixas:{'89402':63.7,'89401':106.7,'89397':0} },
 };
 
-// Histórico de bipagem resumido por loja (meses disponíveis)
+// Histórico de bipagem (mantido como métrica de acompanhamento)
 const BIPAGEM_HIST = {
   '6696':  [{m:'mar/25',i:5498,b:0},{m:'abr/25',i:5312,b:0},{m:'mai/25',i:8103,b:0},{m:'jun/25',i:6198,b:12},{m:'jul/25',i:5621,b:28},{m:'ago/25',i:6843,b:47},{m:'set/25',i:5934,b:89},{m:'out/25',i:5756,b:134},{m:'nov/25',i:7321,b:198},{m:'dez/25',i:11203,b:312},{m:'jan/26',i:4987,b:243},{m:'fev/26',i:4312,b:198},{m:'mar/26',i:5634,b:287}],
   '7253':  [{m:'mar/25',i:1021,b:0},{m:'abr/25',i:987,b:0},{m:'mai/25',i:1534,b:0},{m:'jun/25',i:1123,b:0},{m:'jul/25',i:1187,b:0},{m:'ago/25',i:1234,b:0},{m:'set/25',i:1198,b:0},{m:'out/25',i:3053,b:0},{m:'nov/25',i:3251,b:4},{m:'dez/25',i:4769,b:8},{m:'jan/26',i:2050,b:6},{m:'fev/26',i:1613,b:23},{m:'mar/26',i:1965,b:105}],
@@ -632,151 +618,26 @@ const BIPAGEM_HIST = {
   '18682': [{m:'mar/25',i:1987,b:0},{m:'abr/25',i:1834,b:0},{m:'mai/25',i:3012,b:0},{m:'jun/25',i:2434,b:0},{m:'jul/25',i:2098,b:12},{m:'ago/25',i:2187,b:34},{m:'set/25',i:1765,b:78},{m:'out/25',i:2345,b:134},{m:'nov/25',i:2567,b:198},{m:'dez/25',i:4198,b:289},{m:'jan/26',i:1934,b:198},{m:'fev/26',i:1987,b:234},{m:'mar/26',i:2567,b:312}],
 };
 
-
-// ============================================================
-// CLIQUE E RETIRE
-// ============================================================
-// Consumo estimado mensal por loja (unid) — calculado a partir do relatório de cupons
-// Regras de correlação: aprovadas pelo comprador em 17/04/2026
-// Atualizado via upload do relatorioDeCupom CSV
+// Clique e Retire
 const CLIQUE_BASE = {
   '6696':  { pp:54, p:90, m:66, g:48, caixaP:0, caixaM:0, caixaG:0, cupons_mes:258, atualizado:'abr/26' },
-  '7253':  { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
-  '7473':  { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
-  '7842':  { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
-  '8184':  { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
-  '13789': { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
-  '17626': { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
-  '18682': { pp:0,  p:0,  m:0,  g:0,  caixaP:0, caixaM:0, caixaG:0, cupons_mes:0,   atualizado:'—' },
+  '7253':  { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
+  '7473':  { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
+  '7842':  { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
+  '8184':  { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
+  '13789': { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
+  '17626': { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
+  '18682': { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
 };
 
-// Mapa código → chave interna
 const COD_SACOLA = {'90819':'pp','90821':'p','90822':'m','90823':'g','89402':'caixaP','89401':'caixaM','89397':'caixaG'};
-const SACOLA_COD = {'pp':'90819','p':'90821','m':'90822','g':'90823','caixaP':'89402','caixaM':'89401','caixaG':'89397'};
 const SACOLA_DESC = {'pp':'Sacola PP','p':'Sacola P','m':'Sacola M','g':'Sacola G','caixaP':'Caixa P','caixaM':'Caixa M','caixaG':'Caixa G'};
 
 function consumoCliqueTotal(loja) {
-  // Retorna consumo mensal estimado por código de embalagem
   const c = CLIQUE_BASE[loja] || {};
   const result = {};
-  Object.entries(COD_SACOLA).forEach(([cod, key]) => {
-    result[cod] = c[key] || 0;
-  });
+  Object.entries(COD_SACOLA).forEach(([cod, key]) => { result[cod] = c[key] || 0; });
   return result;
-}
-
-function parseCupomCSV(text, loja) {
-  const lines = text.split('\n').filter(l => l.trim());
-  if (lines.length < 2) throw new Error('Arquivo vazio');
-  const sep = lines[0].includes(';') ? ';' : ',';
-  const headers = lines[0].split(sep).map(h => h.trim().replace(/\r/g,'').toLowerCase());
-
-  const prodIdx = headers.findIndex(h => h.includes('produto'));
-  const valIdx  = headers.findIndex(h => h.includes('valor liq'));
-  const qtdIdx  = headers.findIndex(h => h.includes('quantidade'));
-  const docIdx  = headers.findIndex(h => h.includes('nº doc') || h.includes('n doc') || h === 'doc');
-  const cxIdx   = headers.findIndex(h => h === 'caixa');
-  if (prodIdx < 0 || valIdx < 0) throw new Error('Colunas "Produto" e "Valor liq." não encontradas');
-
-  // Parsear linhas
-  const items = [];
-  lines.slice(1).forEach(line => {
-    const cols = line.split(sep);
-    const prod = (cols[prodIdx] || '').replace(/\r/g,'').trim();
-    const val  = parseFloat((cols[valIdx]  || '0').replace(',','.').replace(/\r/g,'')) || 0;
-    const qtd  = parseFloat((cols[qtdIdx]  || '1').replace(',','.').replace(/\r/g,'')) || 1;
-    const doc  = (cols[docIdx] || '').replace(/\r/g,'').trim();
-    const cx   = (cols[cxIdx]  || '').replace(/\r/g,'').trim();
-    if (!prod || val <= 0) return;
-    const desc = prod.includes(' - ') ? prod.split(' - ')[1].toUpperCase() : prod.toUpperCase();
-    items.push({ desc, val, qtd, cupom: doc + '-' + cx });
-  });
-
-  // Remover brindes
-  const semBrindes = items.filter(i => i.val > 5);
-
-  // Agrupar por cupom
-  const cupons = {};
-  semBrindes.forEach(i => {
-    if (!cupons[i.cupom]) cupons[i.cupom] = [];
-    cupons[i.cupom].push(i);
-  });
-
-  // Classificar tipo de cada item
-  function tipoItem(desc) {
-    if (/ESTJ|KIT |PMPCK|CJ |CONJUNTO|SET /.test(desc))           return 'kit';
-    if (/EDP|DES COL|COLONIA|COL |BDY SPR/.test(desc))            return 'perfumaria';
-    if (/400ML|400G|350ML|300ML|300G|250ML|250G/.test(desc))       return 'hidratacao_g';
-    if (/CREM|LOC |HID|BODY|200ML|200G/.test(desc))               return 'hidratacao_m';
-    if (/MAKE|BASE|BLUSH|BAT |BATOM|SOMBRA|PLT /.test(desc))      return 'maquiagem';
-    if (/DES ANTIT|ANTIT|AER |ROLL/.test(desc))                   return 'desodorante';
-    if (/SAB |SABONETE|BARRA|ESF /.test(desc))                    return 'higiene';
-    if (/SHAMP|COND|MASC CAP|MATCH/.test(desc))                   return 'cabelos';
-    if (/10ML|7ML|5ML|PRM 10|MINI|AMOSTRA/.test(desc))            return 'miniatura';
-    return 'outros';
-  }
-
-  // Sacola por cupom
-  function sacolaCupom(itensCupom) {
-    const tipos = itensCupom.map(i => tipoItem(i.desc));
-    const n          = itensCupom.reduce((s, i) => s + i.qtd, 0);
-    const nKits      = tipos.filter(t => t === 'kit').length;
-    const nPerf      = tipos.filter(t => t === 'perfumaria').length;
-    const nMaq       = tipos.filter(t => t === 'maquiagem').length;
-    const nHidG      = tipos.filter(t => t === 'hidratacao_g').length;
-    const nOutros    = tipos.filter(t => !['kit','perfumaria','maquiagem','hidratacao_g'].includes(t)).length;
-
-    if (nKits >= 2)  return 'g';
-    if (nKits === 1) return 'm';
-    if (nHidG >= 1)  return 'g';
-    if (nPerf >= 3)  return 'm';
-    if (nPerf >= 1)  return (n + nOutros >= 3) ? 'm' : 'p';
-    if (nMaq >= 1 && nPerf === 0 && nKits === 0 && nHidG === 0) return n <= 2 ? 'pp' : 'p';
-    if (n >= 3)  return 'm';
-    if (n >= 2)  return 'p';
-    return 'pp';
-  }
-
-  // Contagem por sacola
-  const contagem = { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0 };
-  Object.values(cupons).forEach(itensCupom => {
-    const s = sacolaCupom(itensCupom);
-    contagem[s]++;
-  });
-
-  // Detectar período e calcular fator de projeção mensal
-  const datas = items.map(i => {
-    // tentar extrair data da linha original (não temos aqui, usar dias únicos do cupom)
-    return i.cupom;
-  });
-  const nCupons  = Object.keys(cupons).length;
-  const totalEmb = Object.values(contagem).reduce((s,v)=>s+v,0);
-
-  // Estimar dias — pegar do campo Data se disponível
-  const dataIdx = headers.findIndex(h => h === 'data');
-  const datasUnicas = new Set();
-  lines.slice(1).forEach(line => {
-    const cols = line.split(sep);
-    if (dataIdx >= 0) datasUnicas.add((cols[dataIdx]||'').trim().replace(/\r/g,''));
-  });
-  const nDias = Math.max(1, datasUnicas.size);
-  const fator = Math.round(30 / nDias);
-
-  // Projeção mensal
-  const mensal = {};
-  Object.entries(contagem).forEach(([k,v]) => { mensal[k] = Math.round(v * fator); });
-
-  // Salvar em CLIQUE_BASE
-  CLIQUE_BASE[loja] = {
-    ...mensal,
-    cupons_mes: Math.round(nCupons * fator),
-    atualizado: new Date().toLocaleDateString('pt-BR', {month:'short', year:'2-digit'})
-  };
-
-  return {
-    nCupons, nDias, fator, contagem, mensal,
-    totalEmb: Object.values(mensal).reduce((s,v)=>s+v,0)
-  };
 }
 
 // CONFIG
@@ -800,13 +661,11 @@ function showPage(id, btn) {
   document.getElementById('page-title').textContent = pageTitles[id]||id;
   renderPage(id);
 }
-
 function trocarLoja(val) {
   lojaAtiva = val === 'todas' ? '6696' : val;
   const activePage = document.querySelector('.page.active');
   if(activePage) renderPage(activePage.id.replace('page-',''));
 }
-
 function renderPage(id) {
   if(id==='dashboard') renderDashboard();
   else if(id==='consolidado') renderConsolidado();
@@ -819,14 +678,69 @@ function renderPage(id) {
   else if(id==='config') renderConfig();
 }
 
-// ============================================================
-// LOJA TABS helper
-// ============================================================
 function renderLojaTabs(containerId, activeId, onClickFn) {
   const c = document.getElementById(containerId);
   c.innerHTML = Object.keys(LOJAS_BASE).map(k=>`
     <button class="loja-tab ${k===activeId?'active':''} loaded" onclick="${onClickFn}('${k}')">${k}</button>
   `).join('');
+}
+
+// ============================================================
+// MOTOR DE PEDIDO — NOVO
+// Sacolas PP/P/M: correlação produto×embalagem + Clique e Retire
+// Caixas P/M/G: consumo_caixas (bipagem histórica)
+// ============================================================
+function calcPedidoLoja(k) {
+  const l = LOJAS_BASE[k];
+  const limite = l.meta * (CONFIG.pct / 100);
+  const corrSacolas = calcConsumoCorrelacao(k);   // PP, P, M via correlação
+  const clique = consumoCliqueTotal(k);            // Clique e Retire por código
+  const rows = [];
+  let totalVal = 0;
+
+  CATALOGO.forEach(e => {
+    const est = l.estoque[e.cod] || 0;
+    let cons = 0;
+    let fonte = '';
+    let consCliq = clique[e.cod] || 0;
+
+    if (e.tipo === 'sacola' && ['90819','90821','90822'].includes(e.cod)) {
+      // SACOLAS PP/P/M → correlação + C&R
+      cons   = (corrSacolas[e.cod] || 0) + consCliq;
+      fonte  = 'correlação';
+    } else if (e.cod === '90823') {
+      // SACOLA G → excluída do pedido automático (baixo giro)
+      return;
+    } else {
+      // CAIXAS → consumo histórico (bipagem) + C&R
+      cons  = (l.consumo_caixas[e.cod] || 0) + consCliq;
+      fonte = 'bipagem';
+    }
+
+    if (cons === 0) return;
+
+    const necessidade = Math.ceil(cons * (CONFIG.cobertura / 30));
+    const comprar     = Math.max(0, necessidade - Math.max(0, est));
+    if (comprar === 0) return;
+
+    const modulos = Math.ceil(comprar / e.qtdMod);
+    const qtdReal = modulos * e.qtdMod;
+    const valor   = modulos * e.valMod;
+    totalVal += valor;
+    rows.push({ ...e, est, cons, consCorr: corrSacolas[e.cod]||0, consCliq, necessidade, comprar, modulos, qtdReal, valor, fonte });
+  });
+
+  return { rows, totalVal, limite };
+}
+
+function calcTotalPedidoFranquia() {
+  return Object.keys(LOJAS_BASE).reduce((s,k) => s + calcPedidoLoja(k).totalVal, 0);
+}
+function calcBipagemMedia() {
+  const vals = Object.keys(BIPAGEM_HIST).map(k => {
+    const hist = BIPAGEM_HIST[k]; const ult = hist[hist.length-1]; return ult.b/ult.i*100;
+  });
+  return vals.reduce((s,v)=>s+v,0)/vals.length;
 }
 
 // ============================================================
@@ -843,11 +757,11 @@ function renderDashboard() {
     <div class="kpi gold"><div class="kpi-label">Faturamento franquia/mês</div><div class="kpi-val">R$ ${fmt(total_fat)}</div><div class="kpi-sub">Média 8 lojas — jan/fev/mar 26</div></div>
     <div class="kpi ${total_ped<=total_lim?'ok':'danger'}"><div class="kpi-label">Pedido consolidado</div><div class="kpi-val">R$ ${fmt(total_ped)}</div><div class="kpi-sub">Limite: R$ ${fmt(total_lim)}</div></div>
     <div class="kpi ${lojas_neg>0?'warn':'ok'}"><div class="kpi-label">Saldos negativos</div><div class="kpi-val">${lojas_neg} lojas</div><div class="kpi-sub">Inventário recomendado</div></div>
-    <div class="kpi ${bip_media<5?'danger':bip_media<15?'warn':'ok'}"><div class="kpi-label">Bipagem média franquia</div><div class="kpi-val">${bip_media.toFixed(1)}%</div><div class="kpi-sub">Último mês disponível</div></div>
+    <div class="kpi ${bip_media<5?'danger':bip_media<15?'warn':'ok'}"><div class="kpi-label">Bipagem média franquia</div><div class="kpi-val">${bip_media.toFixed(1)}%</div><div class="kpi-sub">Acompanhamento — não afeta pedido</div></div>
   `;
 
   const tbody = document.getElementById('dash-fat-table');
-  tbody.innerHTML = Object.entries(LOJAS_BASE).map(([k,l])=>{
+  tbody.innerHTML = Object.entries(LOJAS_BASE).map(([k,l]) => {
     const tend = l.fat_mar > l.fat_jan ? '▲' : '▼';
     const tendColor = l.fat_mar > l.fat_jan ? 'var(--ok)' : 'var(--danger)';
     return `<tr>
@@ -866,19 +780,16 @@ function renderDashboard() {
 // CONSOLIDADO
 // ============================================================
 function renderConsolidado() {
-  const rows = Object.entries(LOJAS_BASE).map(([k,l])=>{
+  const rows = Object.entries(LOJAS_BASE).map(([k,l]) => {
     const {totalVal} = calcPedidoLoja(k);
-    const limite = l.meta*0.01;
+    const limite = l.meta * 0.01;
     const pctOrc = totalVal/limite*100;
     const negCount = Object.values(l.estoque).filter(v=>v<0).length;
-    const bipHist = BIPAGEM_HIST[k];
-    const bipUlt = bipHist[bipHist.length-1];
-    const bipPct = (bipUlt.b/bipUlt.i*100).toFixed(1);
-    let status = 'ok', statusLbl = 'Normal';
+    const mx = MIX_LOJAS[k];
+    let status='ok', statusLbl='Normal';
     if(pctOrc>100){status='danger';statusLbl='Acima do limite';}
     else if(negCount>0){status='warn';statusLbl='Saldo negativo';}
-    else if(parseFloat(bipPct)<5){status='warn';statusLbl='Bipagem baixa';}
-    return {k,l,totalVal,limite,pctOrc,negCount,bipPct,status,statusLbl};
+    return {k,l,totalVal,limite,pctOrc,negCount,mx,status,statusLbl};
   });
 
   const totalFat = rows.reduce((s,r)=>s+r.l.meta,0);
@@ -893,7 +804,7 @@ function renderConsolidado() {
   `;
 
   const tbody = document.getElementById('cons-table');
-  tbody.innerHTML = rows.map(r=>`<tr>
+  tbody.innerHTML = rows.map(r => `<tr>
     <td><strong>${r.l.nome}</strong></td>
     <td class="mono">R$ ${fmt(r.l.meta)}</td>
     <td class="mono">R$ ${fmt(r.limite)}</td>
@@ -905,7 +816,13 @@ function renderConsolidado() {
       </div>
     </td>
     <td>${r.negCount>0?`<span class="badge danger">${r.negCount} itens</span>`:`<span class="badge ok">Nenhum</span>`}</td>
-    <td class="mono">${r.bipPct}%</td>
+    <td>
+      <div class="mix-pill">
+        <span class="pp">PP ${r.mx.pp}%</span>
+        <span class="p">P ${r.mx.p}%</span>
+        <span class="m">M ${r.mx.m}%</span>
+      </div>
+    </td>
     <td><span class="badge ${r.status}">${r.statusLbl}</span></td>
   </tr>`).join('');
 
@@ -927,42 +844,21 @@ function renderPedido() {
 }
 function setPedidoLoja(k) { lojaAtiva=k; renderLojaTabs('pedido-loja-tabs',k,'setPedidoLoja'); renderPedidoLoja(k); }
 
-function calcPedidoLoja(k) {
-  const l = LOJAS_BASE[k];
-  const limite = l.meta * (CONFIG.pct/100);
-  const clique = consumoCliqueTotal(k);
-  const rows = [];
-  let totalVal = 0;
-  CATALOGO.forEach(e => {
-    const est      = l.estoque[e.cod] || 0;
-    const consBip  = l.consumo[e.cod] || 0;
-    const consCliq = clique[e.cod]    || 0;
-    const cons     = consBip + consCliq;          // TOTAL = bipagem + clique e retire
-    if(cons === 0) return;
-    const necessidade = Math.ceil(cons * (CONFIG.cobertura / 30));
-    const comprar = Math.max(0, necessidade - Math.max(0, est));
-    if(comprar === 0) return;
-    const modulos = Math.ceil(comprar / e.qtdMod);
-    const qtdReal = modulos * e.qtdMod;
-    const valor   = modulos * e.valMod;
-    totalVal += valor;
-    rows.push({...e, est, cons, consBip, consCliq, necessidade, comprar, modulos, qtdReal, valor});
-  });
-  return {rows, totalVal, limite};
-}
-
 function renderPedidoLoja(k) {
   const l = LOJAS_BASE[k];
   const {rows, totalVal, limite} = calcPedidoLoja(k);
+  const mx = MIX_LOJAS[k];
   const pctOrc = (totalVal/limite*100).toFixed(1);
   const barColor = pctOrc>100?'var(--danger)':pctOrc>85?'var(--warn)':'var(--ok)';
+  const volPrevisto = Math.round(mx.vol_base * mx.fator_tend);
 
   document.getElementById('pedido-kpis').innerHTML = `
     <div class="kpi gold"><div class="kpi-label">Meta faturamento</div><div class="kpi-val">R$ ${fmt(l.meta)}</div><div class="kpi-sub">Média jan–mar/26</div></div>
     <div class="kpi"><div class="kpi-label">Limite 1%</div><div class="kpi-val">R$ ${fmt(limite)}</div><div class="kpi-sub">Orçamento de embalagens</div></div>
     <div class="kpi ${totalVal<=limite?'ok':'danger'}"><div class="kpi-label">Total do pedido</div><div class="kpi-val">R$ ${fmt(totalVal)}</div><div class="kpi-sub">${pctOrc}% do limite</div></div>
-    <div class="kpi ${totalVal<=limite?'ok':'danger'}"><div class="kpi-label">Margem</div><div class="kpi-val">R$ ${fmt(limite-totalVal)}</div><div class="kpi-sub">${totalVal<=limite?'Dentro do orçamento':'ACIMA DO LIMITE'}</div></div>
+    <div class="kpi info"><div class="kpi-label">Volume previsto/mês</div><div class="kpi-val">${fmt(volPrevisto)}</div><div class="kpi-sub">Itens × fator tend. ${mx.fator_tend.toFixed(2)}</div></div>
   `;
+
   document.getElementById('pedido-orc-pct').textContent = pctOrc+'%';
   document.getElementById('pedido-orc-bar').style.width = Math.min(100,pctOrc)+'%';
   document.getElementById('pedido-orc-bar').style.background = barColor;
@@ -971,29 +867,37 @@ function renderPedidoLoja(k) {
   document.getElementById('pedido-table-title').textContent = `Sugestão de compra — ${l.nome}`;
 
   const tbody = document.getElementById('pedido-table');
-  tbody.innerHTML = rows.map(r=>{
-    let st='ok',stl='OK';
+  tbody.innerHTML = rows.map(r => {
+    let st='ok', stl='OK';
     if(r.est<0){st='danger';stl='Saldo negativo';}
     else if(r.necessidade>r.est*2){st='warn';stl='Estoque baixo';}
+    const fonteBadge = r.fonte==='correlação'
+      ? `<span class="badge corr">correlação</span>`
+      : `<span class="badge neutral">bipagem</span>`;
+    const consExib = r.fonte==='correlação'
+      ? `${r.consCorr} <span style="color:var(--muted);font-size:10px">corr</span>`
+      : `${(r.cons - r.consCliq).toFixed(0)} <span style="color:var(--muted);font-size:10px">bip</span>`;
     return `<tr>
       <td class="mono">${r.cod}</td>
       <td>${r.desc}</td>
-      <td class="mono" style="${r.est<0?'color:var(--danger)':''}">${r.est}</td>
-      <td class="mono">${r.consBip.toFixed(0)}</td>
-      <td class="mono" style="${r.consCliq>0?'color:var(--info);font-weight:600':'color:var(--muted)'}">${r.consCliq>0?'+'+r.consCliq.toFixed(0):'—'}</td>
+      <td class="mono" style="${r.est<0?'color:var(--danger);font-weight:700':''}">${r.est}</td>
+      <td class="mono">${consExib}</td>
+      <td class="mono" style="${r.consCliq>0?'color:var(--info);font-weight:600':'color:var(--muted)'">${r.consCliq>0?'+'+r.consCliq.toFixed(0):'—'}</td>
       <td class="mono" style="font-weight:600">${r.cons.toFixed(0)} unid</td>
       <td class="mono">${r.necessidade} unid</td>
       <td class="mono" style="color:var(--accent);font-weight:700">${r.qtdReal} unid</td>
       <td class="mono">${r.modulos} cx</td>
       <td class="mono"><strong>R$ ${r.valor.toFixed(2).replace('.',',')}</strong></td>
+      <td>${fonteBadge}</td>
       <td><span class="badge ${st}">${stl}</span></td>
     </tr>`;
   }).join('');
+
   document.getElementById('pedido-tfoot-val').textContent = 'R$ '+totalVal.toFixed(2).replace('.',',');
 }
 
 // ============================================================
-// BIPAGEM
+// BIPAGEM (acompanhamento)
 // ============================================================
 function renderBipagem() {
   renderLojaTabs('bipagem-loja-tabs', lojaAtiva, 'setBipagemLoja');
@@ -1009,17 +913,16 @@ function renderBipagemLoja(k) {
   const tendencia = hist[hist.length-1].b/hist[hist.length-1].i > hist[hist.length-2].b/hist[hist.length-2].i;
 
   document.getElementById('bip-kpis').innerHTML = `
-    <div class="kpi ${bipPct<5?'danger':bipPct<15?'warn':'ok'}"><div class="kpi-label">Bipagem último mês</div><div class="kpi-val">${bipPct.toFixed(1)}%</div><div class="kpi-sub">${ult.b} bipagens / ${fmt(ult.i)} itens</div></div>
-    <div class="kpi"><div class="kpi-label">Bipagem média (13 meses)</div><div class="kpi-val">${media.toFixed(1)}%</div><div class="kpi-sub">Histórico completo</div></div>
+    <div class="kpi ${bipPct<5?'danger':bipPct<15?'warn':'ok'}"><div class="kpi-label">Bipagem último mês</div><div class="kpi-val">${bipPct.toFixed(1)}%</div><div class="kpi-sub">${ult.b} registros / ${fmt(ult.i)} itens</div></div>
+    <div class="kpi"><div class="kpi-label">Bipagem média (13m)</div><div class="kpi-val">${media.toFixed(1)}%</div><div class="kpi-sub">Meta: 80% de cobertura</div></div>
     <div class="kpi ${tendencia?'ok':'warn'}"><div class="kpi-label">Tendência</div><div class="kpi-val">${tendencia?'▲ Crescendo':'▼ Caindo'}</div><div class="kpi-sub">vs mês anterior</div></div>
     <div class="kpi"><div class="kpi-label">Meses sem bipagem</div><div class="kpi-val">${hist.filter(h=>h.b===0).length}</div><div class="kpi-sub">De ${hist.length} meses de histórico</div></div>
   `;
 
-  // Chart
   const maxB = Math.max(...hist.map(h=>h.b));
   const chart = document.getElementById('bip-chart');
   const labels = document.getElementById('bip-chart-labels');
-  chart.innerHTML = hist.map(h=>{
+  chart.innerHTML = hist.map(h => {
     const p = (h.b/h.i*100);
     const barH = maxB>0?Math.max(2,(h.b/maxB)*90):2;
     const col = p<1?'var(--danger)':p<5?'var(--warn)':'var(--ok)';
@@ -1031,7 +934,7 @@ function renderBipagemLoja(k) {
   labels.innerHTML = hist.map(h=>`<div style="flex:1;text-align:center;font-size:9px;font-family:'DM Mono',monospace;color:var(--muted)">${h.m}</div>`).join('');
 
   const tbody = document.getElementById('bip-table');
-  tbody.innerHTML = hist.map(h=>{
+  tbody.innerHTML = hist.map(h => {
     const p = (h.b/h.i*100);
     const st = p<1?'danger':p<5?'warn':'ok';
     const stl = p<1?'Crítico':p<5?'Em melhora':'Evoluindo';
@@ -1040,7 +943,6 @@ function renderBipagemLoja(k) {
       <td class="mono">${h.i.toLocaleString('pt-BR')}</td>
       <td class="mono">${h.b}</td>
       <td class="mono"><strong>${p.toFixed(1)}%</strong></td>
-      <td class="mono" colspan="7" style="color:var(--muted);font-size:11px;">Dados por tipo de embalagem disponíveis após implantação completa do registro</td>
       <td><span class="badge ${st}">${stl}</span></td>
     </tr>`;
   }).join('');
@@ -1057,32 +959,37 @@ function setEstoqueLoja(k) { lojaAtiva=k; renderLojaTabs('estoque-loja-tabs',k,'
 
 function renderEstoqueLoja(k) {
   const l = LOJAS_BASE[k];
+  const corrSacolas = calcConsumoCorrelacao(k);
   const negativos = CATALOGO.filter(e=>(l.estoque[e.cod]||0)<0);
   const alertas = document.getElementById('estoque-alertas');
   alertas.innerHTML = '';
   if(negativos.length>0) {
     alertas.innerHTML = `<div class="alert danger"><div class="alert-icon">⚠</div><div>
       <div class="alert-title">Saldos negativos detectados — inventário físico recomendado</div>
-      <div class="alert-body">${negativos.map(e=>`${e.desc}: ${l.estoque[e.cod]} unidades`).join(' Â· ')}</div>
+      <div class="alert-body">${negativos.map(e=>`${e.desc}: ${l.estoque[e.cod]} unidades`).join(' · ')}</div>
     </div></div>`;
   }
 
   const tbody = document.getElementById('estoque-table');
-  tbody.innerHTML = CATALOGO.map(e=>{
+  tbody.innerHTML = CATALOGO.map(e => {
     const est = l.estoque[e.cod]||0;
-    const cons = l.consumo[e.cod]||0;
+    let cons = 0;
+    if(['90819','90821','90822'].includes(e.cod)) cons = corrSacolas[e.cod]||0;
+    else if(e.cod==='90823') cons = 0;
+    else cons = l.consumo_caixas[e.cod]||0;
     const cob = cons>0 ? Math.round(est/cons*30) : null;
-    let st='neutral', stl='Sem bipagem';
+    let st='neutral', stl='Sem consumo';
     if(est<0){st='danger';stl='Negativo';}
     else if(cob!==null && cob<40){st='warn';stl='Comprar';}
     else if(cob!==null && cob>120){st='info';stl='Estoque alto';}
     else if(cob!==null){st='ok';stl='OK';}
+    const fonte = ['90819','90821','90822'].includes(e.cod) ? '<span class="badge corr" style="font-size:9px">corr</span>' : e.cod==='90823' ? '<span class="badge neutral" style="font-size:9px">excluída</span>' : '<span class="badge neutral" style="font-size:9px">bip</span>';
     return `<tr>
       <td class="mono">${e.cod}</td>
       <td>${e.desc}</td>
       <td><span class="badge ${e.tipo==='sacola'?'info':'gold'}">${e.tipo}</span></td>
       <td class="mono" style="${est<0?'color:var(--danger);font-weight:700':''}">${est}</td>
-      <td class="mono">${cons>0?cons.toFixed(0)+' unid':'—'}</td>
+      <td class="mono">${cons>0?cons.toFixed(0)+' unid':'—'} ${fonte}</td>
       <td class="mono">${cob!==null?(cob<0?'—':cob+' dias'):'—'}</td>
       <td class="mono">${e.qtdMod}</td>
       <td class="mono">R$ ${e.valUnit.toFixed(3).replace('.',',')}</td>
@@ -1095,10 +1002,10 @@ function renderEstoqueLoja(k) {
 // SAZONAIS
 // ============================================================
 const DATAS_SAZ = [
-  {key:'maes', label:'ð¸ Dia das Mães', data:'11/05/2026', fat_default:250000, cresc_default:80},
-  {key:'nam',  label:'ð Dia dos Namorados', data:'12/06/2026', fat_default:180000, cresc_default:40},
-  {key:'pais', label:'ð¨ Dia dos Pais', data:'10/08/2026', fat_default:170000, cresc_default:30},
-  {key:'natal',label:'ð Natal', data:'25/12/2026', fat_default:400000, cresc_default:130},
+  {key:'maes', label:'🌸 Dia das Mães',    data:'11/05/2026', fat_default:250000, cresc_default:80},
+  {key:'nam',  label:'💕 Dia dos Namorados', data:'12/06/2026', fat_default:180000, cresc_default:40},
+  {key:'pais', label:'👨 Dia dos Pais',    data:'10/08/2026', fat_default:170000, cresc_default:30},
+  {key:'natal',label:'🎁 Natal',            data:'25/12/2026', fat_default:400000, cresc_default:130},
 ];
 function renderSazonais() {
   const grid = document.getElementById('saz-grid');
@@ -1130,16 +1037,11 @@ function calcSazonal(key) {
 }
 
 // ============================================================
-// UPLOAD
-// ============================================================
-
-// ============================================================
 // CLIQUE E RETIRE
 // ============================================================
 function renderClique() {
   renderLojaTabs('clique-loja-tabs', lojaAtiva, 'setCliqueLoja');
   renderCliqueLoja(lojaAtiva);
-  // Upload zones
   const grid = document.getElementById('clique-upload-grid');
   if(grid) grid.innerHTML = Object.entries(LOJAS_BASE).map(([k,l])=>`
     <div>
@@ -1151,7 +1053,6 @@ function renderClique() {
       </div>
     </div>`).join('');
 }
-
 function setCliqueLoja(k) { lojaAtiva=k; renderLojaTabs('clique-loja-tabs',k,'setCliqueLoja'); renderCliqueLoja(k); }
 
 function renderCliqueLoja(k) {
@@ -1159,367 +1060,399 @@ function renderCliqueLoja(k) {
   const semDados = c.cupons_mes === 0;
   document.getElementById('clique-alert-sem-dados').style.display = semDados ? 'flex' : 'none';
   document.getElementById('clique-card-tabela').style.display = semDados ? 'none' : 'block';
-
   if(semDados) {
-    document.getElementById('clique-kpis').innerHTML = `
-      <div class="kpi"><div class="kpi-label">Status</div><div class="kpi-val" style="font-size:16px">Sem dados</div><div class="kpi-sub">Aguardando upload do relatório de cupons</div></div>`;
+    document.getElementById('clique-kpis').innerHTML = `<div class="kpi"><div class="kpi-label">Status</div><div class="kpi-val" style="font-size:16px">Sem dados</div><div class="kpi-sub">Aguardando upload do relatório de cupons</div></div>`;
     return;
   }
-
   const totalEmb = ['pp','p','m','g','caixaP','caixaM','caixaG'].reduce((s,k2)=>s+(c[k2]||0),0);
   const l = LOJAS_BASE[k];
-  const consTotal = Object.values(l.consumo).reduce((s,v)=>s+v,0);
+  const corrSacolas = calcConsumoCorrelacao(k);
+  const consTotal = Object.values(corrSacolas).reduce((s,v)=>s+v,0) + Object.values(l.consumo_caixas).reduce((s,v)=>s+v,0);
   const cliqTotal = Object.values(consumoCliqueTotal(k)).reduce((s,v)=>s+v,0);
 
   document.getElementById('clique-kpis').innerHTML = `
     <div class="kpi gold"><div class="kpi-label">Cupons/mês estimados</div><div class="kpi-val">${c.cupons_mes}</div><div class="kpi-sub">Canal Clique e Retire</div></div>
     <div class="kpi info"><div class="kpi-label">Embalagens/mês (C&R)</div><div class="kpi-val">${totalEmb}</div><div class="kpi-sub">Estimativa pelo padrão do período</div></div>
-    <div class="kpi warn"><div class="kpi-label">% consumo invisível</div><div class="kpi-val">${consTotal>0?(cliqTotal/(consTotal+cliqTotal)*100).toFixed(0):'100'}%</div><div class="kpi-sub">Do total de embalagens</div></div>
+    <div class="kpi warn"><div class="kpi-label">% do consumo total</div><div class="kpi-val">${consTotal>0?(cliqTotal/(consTotal+cliqTotal)*100).toFixed(0):'100'}%</div><div class="kpi-sub">Canal Clique e Retire</div></div>
     <div class="kpi"><div class="kpi-label">Atualizado em</div><div class="kpi-val" style="font-size:16px">${c.atualizado}</div><div class="kpi-sub">Próx. atualização: próx. mês</div></div>
   `;
 
-  document.getElementById('clique-table-title').textContent = `Estimativa mensal — ${LOJAS_BASE[k].nome}`;
+  document.getElementById('clique-table-title').textContent = `Estimativa mensal — ${l.nome}`;
   document.getElementById('clique-atualizado').textContent = 'Dados de ' + c.atualizado;
 
-  const mapa = [
-    {key:'pp', cod:'90819', desc:'Sacola PP'},
-    {key:'p',  cod:'90821', desc:'Sacola P'},
-    {key:'m',  cod:'90822', desc:'Sacola M'},
-    {key:'g',  cod:'90823', desc:'Sacola G'},
-    {key:'caixaP', cod:'89402', desc:'Caixa P'},
-    {key:'caixaM', cod:'89401', desc:'Caixa M'},
-    {key:'caixaG', cod:'89397', desc:'Caixa G'},
-  ];
-
-  const tbody = document.getElementById('clique-table');
-  let totalImpacto = 0;
-  tbody.innerHTML = mapa.map(({key,cod,desc}) => {
-    const qtd = c[key] || 0;
-    if(qtd === 0) return '';
-    const consBip = l.consumo[cod] || 0;
-    const pctTotal = consBip+qtd > 0 ? (qtd/(consBip+qtd)*100).toFixed(0) : '100';
-    const cat = CATALOGO.find(e=>e.cod===cod);
-    const impacto = cat ? Math.ceil((qtd*(CONFIG.cobertura/30))/cat.qtdMod)*cat.valMod : 0;
-    totalImpacto += impacto;
-    return `<tr>
-      <td><strong>${desc}</strong></td>
-      <td class="mono">${cod}</td>
-      <td class="mono">${Math.round(qtd/6)} cupons</td>
-      <td class="mono">~5 dias analisados</td>
-      <td class="mono" style="color:var(--info);font-weight:700">~${qtd} unid/mês</td>
-      <td>
-        <div class="mini-bar-wrap">
-          <div class="mini-track"><div class="mini-fill" style="width:${pctTotal}%;background:var(--info)"></div></div>
-          <span class="mono">${pctTotal}%</span>
-        </div>
-      </td>
-      <td class="mono">+R$ ${impacto.toFixed(2).replace('.',',')}</td>
-    </tr>`;
-  }).join('');
-
-  document.getElementById('clique-tfoot').innerHTML = `
-    <td colspan="4">TOTAL MENSAL ESTIMADO</td>
-    <td>~${totalEmb} unid/mês</td>
-    <td></td>
-    <td>+R$ ${totalImpacto.toFixed(2).replace('.',',')}</td>
-  `;
-}
-
-function processarCupomUpload(loja, input) {
-  const file = input.files[0]; if(!file) return;
-  const zone = input.closest('.upload-zone');
-  zone.style.opacity = '0.5';
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const resultado = parseCupomCSV(e.target.result, loja);
-      zone.classList.add('loaded');
-      zone.style.opacity = '1';
-      zone.querySelector('.uz-sub').textContent = '~' + CLIQUE_BASE[loja].cupons_mes + ' cupons/mês ✓';
-      renderCliqueLoja(loja);
-      showToast(
-        LOJAS_BASE[loja].nome + ' — Clique e Retire atualizado',
-        `${resultado.nCupons} cupons · ${resultado.nDias} dias · fator ×${resultado.fator} → ~${resultado.totalEmb} embalagens/mês`,
-        'ok', 6000
-      );
-    } catch(err) {
-      zone.style.opacity = '1';
-      showToast('Erro ao processar cupons', err.message, 'error');
-    }
-  };
-  reader.readAsText(file, 'latin1');
-}
-
-function exportarClique() {
-  const c = CLIQUE_BASE[lojaAtiva];
-  let csv = 'Embalagem;Código;Estimativa mensal\n';
   const mapa = [
     {key:'pp',cod:'90819',desc:'Sacola PP'},{key:'p',cod:'90821',desc:'Sacola P'},
     {key:'m',cod:'90822',desc:'Sacola M'},{key:'g',cod:'90823',desc:'Sacola G'},
     {key:'caixaP',cod:'89402',desc:'Caixa P'},{key:'caixaM',cod:'89401',desc:'Caixa M'},
     {key:'caixaG',cod:'89397',desc:'Caixa G'},
   ];
-  mapa.forEach(({key,cod,desc}) => { if(c[key]>0) csv += `${desc};${cod};${c[key]}\n`; });
-  baixarCSV(csv, `clique-retire-${lojaAtiva}.csv`);
+  const tbody = document.getElementById('clique-table');
+  let totalImpacto = 0;
+  tbody.innerHTML = mapa.map(({key,cod,desc}) => {
+    const qtd = c[key]||0; if(qtd===0) return '';
+    const consPrinc = ['90819','90821','90822'].includes(cod) ? (corrSacolas[cod]||0) : (l.consumo_caixas[cod]||0);
+    const pctTotal = consPrinc+qtd>0?(qtd/(consPrinc+qtd)*100).toFixed(0):'100';
+    const cat = CATALOGO.find(e=>e.cod===cod);
+    const impacto = cat?Math.ceil((qtd*(CONFIG.cobertura/30))/cat.qtdMod)*cat.valMod:0;
+    totalImpacto += impacto;
+    return `<tr>
+      <td><strong>${desc}</strong></td><td class="mono">${cod}</td>
+      <td class="mono">${Math.round(qtd/6)} cupons</td><td class="mono">~5 dias analisados</td>
+      <td class="mono" style="color:var(--info);font-weight:700">~${qtd} unid/mês</td>
+      <td><div class="mini-bar-wrap"><div class="mini-track"><div class="mini-fill" style="width:${pctTotal}%;background:var(--info)"></div></div><span class="mono">${pctTotal}%</span></div></td>
+      <td class="mono">+R$ ${impacto.toFixed(2).replace('.',',')}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('clique-tfoot').innerHTML = `<td colspan="4">TOTAL MENSAL ESTIMADO</td><td>~${totalEmb} unid/mês</td><td></td><td>+R$ ${totalImpacto.toFixed(2).replace('.',',')}</td>`;
 }
 
-async function analisarCliqueIA() {
-  setAILoading('ai-clique-text');
-  const c = CLIQUE_BASE[lojaAtiva];
-  const l = LOJAS_BASE[lojaAtiva];
-  const mapa = {pp:'Sacola PP',p:'Sacola P',m:'Sacola M',g:'Sacola G',caixaP:'Caixa P',caixaM:'Caixa M',caixaG:'Caixa G'};
-  const detalhe = Object.entries(mapa).map(([k,desc]) => c[k]>0?`${desc}: ~${c[k]} unid/mês`:'').filter(Boolean).join(', ');
-  const consBip = Object.values(l.consumo).reduce((s,v)=>s+v,0);
-  const consCliq = Object.values(consumoCliqueTotal(lojaAtiva)).reduce((s,v)=>s+v,0);
-  const prompt = `Você é especialista em gestão de embalagens para franquias de cosméticos. Analise os dados do canal Clique e Retire abaixo.
-
-LOJA: ${l.nome}
-CONTEXTO: Clique e Retire = pedidos feitos no site da indústria, retirados na loja. A loja embala o produto mas não registra a embalagem em nenhum sistema. O consumo é estimado por correlação produto → embalagem.
-
-CONSUMO ESTIMADO CLIQUE E RETIRE/MÊS:
-${detalhe}
-Total: ~${consCliq} embalagens/mês (${consBip>0?(consCliq/(consBip+consCliq)*100).toFixed(0):100}% do consumo total era invisível)
-
-CONSUMO BIPADO (canal normal)/MÊS:
-${Object.entries(l.consumo).filter(([k,v])=>v>0).map(([cod,v])=>{const e=CATALOGO.find(c=>c.cod===cod);return e?`${e.desc}: ${v.toFixed(0)} unid`:''}).filter(Boolean).join(', ')||'Dados insuficientes'}
-
-Analise:
-1. O impacto do Clique e Retire no consumo real de embalagens
-2. Quais embalagens têm maior distorção (o que mais estava invisível)
-3. Como isso afeta o planejamento de compras
-4. Recomendação sobre frequência de inventário para calibrar as estimativas
-5. Tendência: com Dia das Mães se aproximando, o Clique e Retire deve aumentar?
-Máximo 250 palavras.`;
-  try {
-    document.getElementById('ai-clique-text').textContent = await chamarGemini(prompt);
-  } catch(e) { document.getElementById('ai-clique-text').textContent = 'Erro: ' + e.message; }
+function parseCupomCSV(text, loja) {
+  const lines = text.split('\n').filter(l=>l.trim());
+  if(lines.length<2) throw new Error('Arquivo vazio');
+  const sep = lines[0].includes(';')?';':',';
+  const headers = lines[0].split(sep).map(h=>h.trim().replace(/\r/g,'').toLowerCase());
+  const prodIdx = headers.findIndex(h=>h.includes('produto'));
+  const valIdx  = headers.findIndex(h=>h.includes('valor liq'));
+  const qtdIdx  = headers.findIndex(h=>h.includes('quantidade'));
+  const docIdx  = headers.findIndex(h=>h.includes('nº doc')||h.includes('n doc')||h==='doc');
+  const cxIdx   = headers.findIndex(h=>h==='caixa');
+  const dataIdx = headers.findIndex(h=>h==='data');
+  if(prodIdx<0||valIdx<0) throw new Error('Colunas "Produto" e "Valor liq." não encontradas');
+  const items=[];
+  lines.slice(1).forEach(line=>{
+    const cols=line.split(sep);
+    const prod=(cols[prodIdx]||'').replace(/\r/g,'').trim();
+    const val=parseFloat((cols[valIdx]||'0').replace(',','.').replace(/\r/g,''))||0;
+    const qtd=parseFloat((cols[qtdIdx]||'1').replace(',','.').replace(/\r/g,''))||1;
+    const doc=(cols[docIdx]||'').replace(/\r/g,'').trim();
+    const cx=(cols[cxIdx]||'').replace(/\r/g,'').trim();
+    if(!prod||val<=0) return;
+    const desc=prod.includes(' - ')?prod.split(' - ')[1].toUpperCase():prod.toUpperCase();
+    items.push({desc,val,qtd,cupom:doc+'-'+cx});
+  });
+  const semBrindes=items.filter(i=>i.val>5);
+  const cupons={};
+  semBrindes.forEach(i=>{ if(!cupons[i.cupom]) cupons[i.cupom]=[]; cupons[i.cupom].push(i); });
+  function tipoItem(desc){
+    if(/ESTJ|KIT |PMPCK|CJ |CONJUNTO|SET /.test(desc)) return 'kit';
+    if(/EDP|DES COL|COLONIA|COL |BDY SPR/.test(desc)) return 'perfumaria';
+    if(/400ML|400G|350ML|300ML|300G|250ML|250G/.test(desc)) return 'hidratacao_g';
+    if(/CREM|LOC |HID|BODY|200ML|200G/.test(desc)) return 'hidratacao_m';
+    if(/MAKE|BASE|BLUSH|BAT |BATOM|SOMBRA|PLT /.test(desc)) return 'maquiagem';
+    if(/DES ANTIT|ANTIT|AER |ROLL/.test(desc)) return 'desodorante';
+    if(/SAB |SABONETE|BARRA|ESF /.test(desc)) return 'higiene';
+    if(/SHAMP|COND|MASC CAP|MATCH/.test(desc)) return 'cabelos';
+    if(/10ML|7ML|5ML|PRM 10|MINI|AMOSTRA/.test(desc)) return 'miniatura';
+    return 'outros';
+  }
+  function sacolaCupom(itensCupom){
+    const tipos=itensCupom.map(i=>tipoItem(i.desc));
+    const n=itensCupom.reduce((s,i)=>s+i.qtd,0);
+    const nKits=tipos.filter(t=>t==='kit').length;
+    const nPerf=tipos.filter(t=>t==='perfumaria').length;
+    const nMaq=tipos.filter(t=>t==='maquiagem').length;
+    const nHidG=tipos.filter(t=>t==='hidratacao_g').length;
+    const nOutros=tipos.filter(t=>!['kit','perfumaria','maquiagem','hidratacao_g'].includes(t)).length;
+    if(nKits>=2) return 'g';
+    if(nKits===1) return 'm';
+    if(nHidG>=1) return 'g';
+    if(nPerf>=3) return 'm';
+    if(nPerf>=1) return (n+nOutros>=3)?'m':'p';
+    if(nMaq>=1&&nPerf===0&&nKits===0&&nHidG===0) return n<=2?'pp':'p';
+    if(n>=3) return 'm';
+    if(n>=2) return 'p';
+    return 'pp';
+  }
+  const contagem={pp:0,p:0,m:0,g:0,caixaP:0,caixaM:0,caixaG:0};
+  Object.values(cupons).forEach(itensCupom=>{ const s=sacolaCupom(itensCupom); contagem[s]++; });
+  const datasUnicas=new Set();
+  lines.slice(1).forEach(line=>{ const cols=line.split(sep); if(dataIdx>=0) datasUnicas.add((cols[dataIdx]||'').trim().replace(/\r/g,'')); });
+  const nDias=Math.max(1,datasUnicas.size);
+  const nCupons=Object.keys(cupons).length;
+  const fator=Math.round(30/nDias);
+  const mensal={};
+  Object.entries(contagem).forEach(([k,v])=>{ mensal[k]=Math.round(v*fator); });
+  CLIQUE_BASE[loja]={...mensal,cupons_mes:Math.round(nCupons*fator),atualizado:new Date().toLocaleDateString('pt-BR',{month:'short',year:'2-digit'})};
+  return {nCupons,nDias,fator,contagem,mensal,totalEmb:Object.values(mensal).reduce((s,v)=>s+v,0)};
 }
 
+function processarCupomUpload(loja,input){
+  const file=input.files[0]; if(!file) return;
+  const zone=input.closest('.upload-zone'); zone.style.opacity='0.5';
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const resultado=parseCupomCSV(e.target.result,loja);
+      zone.classList.add('loaded'); zone.style.opacity='1';
+      zone.querySelector('.uz-sub').textContent='~'+CLIQUE_BASE[loja].cupons_mes+' cupons/mês ✓';
+      renderCliqueLoja(loja);
+      showToast(LOJAS_BASE[loja].nome+' — C&R atualizado',`${resultado.nCupons} cupons · ${resultado.nDias} dias · ×${resultado.fator} → ~${resultado.totalEmb} emb/mês`,'ok',6000);
+    }catch(err){ zone.style.opacity='1'; showToast('Erro ao processar cupons',err.message,'error'); }
+  };
+  reader.readAsText(file,'latin1');
+}
+
+function exportarClique(){
+  const c=CLIQUE_BASE[lojaAtiva]; let csv='Embalagem;Código;Estimativa mensal\n';
+  [['pp','90819','Sacola PP'],['p','90821','Sacola P'],['m','90822','Sacola M'],['g','90823','Sacola G'],['caixaP','89402','Caixa P'],['caixaM','89401','Caixa M'],['caixaG','89397','Caixa G']].forEach(([key,cod,desc])=>{ if(c[key]>0) csv+=`${desc};${cod};${c[key]}\n`; });
+  baixarCSV(csv,`clique-retire-${lojaAtiva}.csv`);
+}
+
+// ============================================================
+// UPLOAD
+// ============================================================
 function renderUpload() {
   const body = document.getElementById('upload-body');
   body.innerHTML = `
-    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Faça upload dos arquivos CSV para cada loja. O sistema processará os dados automaticamente e atualizará todas as análises.</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+      Faça upload do <strong>relatório ABC de vendas</strong> para recalibrar o mix e volume de cada loja, e do <strong>estoque atual</strong> no momento da compra.
+    </p>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
     ${Object.entries(LOJAS_BASE).map(([k,l])=>`
       <div>
         <div style="font-size:12px;font-weight:600;margin-bottom:8px;font-family:'DM Mono',monospace;">${l.nome}</div>
         <div class="upload-zone loaded" style="padding:12px;text-align:left;">
           <input type="file" accept=".csv" onchange="processarUpload('${k}','hist',this)">
-          <div class="uz-title" style="font-size:12px;">ð Histórico</div>
-          <div class="uz-sub">Historico_${k}.csv ✓</div>
+          <div class="uz-title" style="font-size:12px;">📊 ABC Vendas</div>
+          <div class="uz-sub">relatorioABCVenda.csv ✓</div>
         </div>
         <div style="height:8px"></div>
         <div class="upload-zone loaded" style="padding:12px;text-align:left;">
           <input type="file" accept=".csv" onchange="processarUpload('${k}','est',this)">
-          <div class="uz-title" style="font-size:12px;">ð¦ Estoque</div>
+          <div class="uz-title" style="font-size:12px;">📦 Estoque</div>
           <div class="uz-sub">posicao-estoque-${k}.csv ✓</div>
         </div>
       </div>`).join('')}
     </div>`;
 }
-// ============================================================
-// TOAST
-// ============================================================
-function showToast(title, sub='', type='ok', duration=4000) {
-  const toast = document.getElementById('toast');
-  const icons = {ok:'✓', error:'✕', warn:'⚠', info:'ℹ'};
-  document.getElementById('toast-icon').textContent = icons[type]||'✓';
-  document.getElementById('toast-title').textContent = title;
-  document.getElementById('toast-sub').textContent = sub;
-  toast.className = 'toast ' + (type!=='ok'?type:'');
-  toast.classList.add('show');
-  clearTimeout(toast._timer);
-  toast._timer = setTimeout(()=>toast.classList.remove('show'), duration);
+
+function uploadCatalogo(input){
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{ parseCatalogo(e.target.result); input.closest('.upload-zone').classList.add('loaded'); refreshTudo(null,'catalogo',{}); showToast('Catálogo atualizado',file.name+' processado'); };
+  reader.readAsText(file,'latin1');
 }
 
-// ============================================================
-// UPLOAD & PARSE
-// ============================================================
-function processarUpload(loja, tipo, input) {
-  const file = input.files[0]; if(!file) return;
-  const zone = input.closest('.upload-zone');
-  zone.style.opacity = '0.5';
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const resultado = parseCSV(e.target.result, loja, tipo);
-      zone.classList.add('loaded');
-      zone.style.opacity = '1';
-      // Atualizar label com nome do arquivo
-      zone.querySelector('.uz-sub').textContent = file.name + ' ✓';
-      // Refresh automático de toda a interface
-      refreshTudo(loja, tipo, resultado);
-    } catch(err) {
-      zone.style.opacity = '1';
-      showToast('Erro ao processar arquivo', err.message, 'error');
-    }
-  };
-  reader.onerror = () => { zone.style.opacity='1'; showToast('Erro ao ler arquivo','','error'); };
-  reader.readAsText(file, 'latin1');
-}
-
-function uploadCatalogo(input) {
-  const file = input.files[0]; if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    parseCatalogo(e.target.result);
-    input.closest('.upload-zone').classList.add('loaded');
-    refreshTudo(null, 'catalogo', {});
-    showToast('Catálogo atualizado', file.name + ' processado com sucesso');
-  };
-  reader.readAsText(file, 'latin1');
-}
-
-function parseCatalogo(text) {
-  const lines = text.split('\n').filter(l=>l.trim());
-  const sep = lines[0].includes(';') ? ';' : ',';
-  const headers = lines[0].split(sep).map(h=>h.trim().replace(/\r/g,'').toLowerCase());
-  const codIdx   = headers.findIndex(h=>h.includes('código')||h.includes('codigo'));
-  const descIdx  = headers.findIndex(h=>h.includes('descri'));
-  const modIdx   = headers.findIndex(h=>h.includes('módulo')||h.includes('modulo')||h.includes('p'));
-  const valIdx   = headers.findIndex(h=>h.includes('unit')||h.includes('v.'));
-  if(codIdx<0||valIdx<0) return;
+function parseCatalogo(text){
+  const lines=text.split('\n').filter(l=>l.trim());
+  const sep=lines[0].includes(';')?';':',';
+  const headers=lines[0].split(sep).map(h=>h.trim().replace(/\r/g,'').toLowerCase());
+  const codIdx=headers.findIndex(h=>h.includes('código')||h.includes('codigo'));
+  const modIdx=headers.findIndex(h=>h.includes('módulo')||h.includes('modulo'));
+  if(codIdx<0||modIdx<0) return;
   lines.slice(1).forEach(line=>{
-    const cols = line.split(sep);
-    const cod = String(cols[codIdx]||'').trim().replace(/\r/g,'');
-    const valMod = parseFloat((cols[modIdx]||'0').replace(',','.').replace(/\r/g,''));
-    const qtdMod = parseFloat((cols[valIdx]||'0').replace(',','.').replace(/\r/g,''));
-    const item = CATALOGO.find(c=>c.cod===cod);
-    if(item && valMod>0) { item.valMod=valMod; item.valUnit=valMod/item.qtdMod; }
+    const cols=line.split(sep);
+    const cod=String(cols[codIdx]||'').trim().replace(/\r/g,'');
+    const valMod=parseFloat((cols[modIdx]||'0').replace(',','.').replace(/\r/g,''));
+    const item=CATALOGO.find(c=>c.cod===cod);
+    if(item&&valMod>0){item.valMod=valMod;item.valUnit=valMod/item.qtdMod;}
   });
 }
 
-function parseCSV(text, loja, tipo) {
-  const lines = text.split('\n').filter(l=>l.trim());
-  if(lines.length < 2) throw new Error('Arquivo vazio ou sem dados');
-  const sep = lines[0].includes(';') ? ';' : ',';
-  const headers = lines[0].split(sep).map(h=>h.trim().replace(/\r/g,''));
-  const CODIGOS_SET = new Set(['89397','89401','89402','90819','90821','90822','90823']);
-  const resultado = { loja, tipo, linhas: lines.length-1, atualizacoes: 0, meses: [], fatMedio: 0 };
+function parseCSV(text, loja, tipo){
+  const lines=text.split('\n').filter(l=>l.trim());
+  if(lines.length<2) throw new Error('Arquivo vazio ou sem dados');
+  const sep=lines[0].includes(';')?';':',';
+  const headers=lines[0].split(sep).map(h=>h.trim().replace(/\r/g,''));
+  const CODIGOS_SET=new Set(['89397','89401','89402','90819','90821','90822','90823']);
+  const resultado={loja,tipo,linhas:lines.length-1,atualizacoes:0,meses:[],fatMedio:0};
 
-  if(tipo==='est') {
-    const codIdx   = headers.findIndex(h=>h.toLowerCase().includes('produto'));
-    const saldoIdx = headers.findIndex(h=>h.toLowerCase().includes('saldo atual'));
+  if(tipo==='est'){
+    const codIdx=headers.findIndex(h=>h.toLowerCase().includes('produto'));
+    const saldoIdx=headers.findIndex(h=>h.toLowerCase().includes('saldo atual'));
     if(codIdx<0||saldoIdx<0) throw new Error('Colunas "Produto" e "Saldo Atual" não encontradas');
     lines.slice(1).forEach(line=>{
-      const cols = line.split(sep);
+      const cols=line.split(sep);
       if(!cols[codIdx]) return;
-      const cod = cols[codIdx].trim().replace(/\r/g,'').replace(/^0+/,'');
-      const saldo = parseFloat((cols[saldoIdx]||'0').replace(',','.').replace(/\r/g,''));
-      if(CODIGOS_SET.has(cod)) {
-        LOJAS_BASE[loja].estoque[cod] = saldo;
-        resultado.atualizacoes++;
-      }
+      const cod=cols[codIdx].trim().replace(/\r/g,'').replace(/^0+/,'');
+      const saldo=parseFloat((cols[saldoIdx]||'0').replace(',','.').replace(/\r/g,''));
+      if(CODIGOS_SET.has(cod)){LOJAS_BASE[loja].estoque[cod]=saldo;resultado.atualizacoes++;}
     });
   }
 
-  if(tipo==='hist') {
-    const codIdx = headers.findIndex(h=>h==='Código'||h==='Codigo'||h.toLowerCase()==='código');
-    const qIdx   = headers.findIndex(h=>h==='Quantidade'||h.toLowerCase()==='quantidade');
-    const dtIdx  = headers.findIndex(h=>h==='Quebra'||h.toLowerCase()==='quebra');
-    const fatIdx = headers.findIndex(h=>h==='Faturamento'||h.toLowerCase()==='faturamento');
+  if(tipo==='hist'){
+    // Upload do ABC de vendas → recalibra mix e volume da loja
+    const codIdx=headers.findIndex(h=>h==='Código'||h==='Codigo'||h.toLowerCase()==='código');
+    const qIdx=headers.findIndex(h=>h==='Quantidade'||h.toLowerCase()==='quantidade');
+    const dtIdx=headers.findIndex(h=>h==='Quebra'||h.toLowerCase()==='quebra');
+    const fatIdx=headers.findIndex(h=>h==='Faturamento'||h.toLowerCase()==='faturamento');
+    const descIdx=headers.findIndex(h=>h==='Descrição'||h==='Descricao'||h.toLowerCase()==='descrição');
     if(codIdx<0||qIdx<0||dtIdx<0) throw new Error('Colunas obrigatórias não encontradas (Código, Quantidade, Quebra)');
 
-    // Detectar os 3 meses mais recentes no arquivo
-    const mesesNoArquivo = new Set();
+    const mesesNoArquivo=new Set();
     lines.slice(1).forEach(line=>{
-      const cols = line.split(sep);
-      const dt = (cols[dtIdx]||'').trim().replace(/\r/g,'');
+      const cols=line.split(sep);
+      const dt=(cols[dtIdx]||'').trim().replace(/\r/g,'');
       if(!dt) return;
-      const parts = dt.split('/');
+      const parts=dt.split('/');
       if(parts.length>=3) mesesNoArquivo.add(parts[2].substring(0,4)+'-'+parts[1]);
     });
-    const mesesOrdenados = Array.from(mesesNoArquivo).sort();
-    const ultimos3 = mesesOrdenados.slice(-3);
-    resultado.meses = ultimos3;
+    const mesesOrdenados=Array.from(mesesNoArquivo).sort();
+    const ultimos5=mesesOrdenados.slice(-5);
+    resultado.meses=ultimos5;
 
-    // Calcular consumo de embalagens (últimos 3 meses)
-    const consumoPorCod = {};
-    // Calcular faturamento (excluindo embalagens, últimos 3 meses)
-    const fatPorMes = {};
+    // Contagem de itens por mês (excluindo embalagens) para recalibrar mix
+    const itensPorMes={};
+    const sacolasPorMes={pp:{},p:{},m:{}};
+    const fatPorMes={};
+    const caixasConsumo={};
+
+    // Classificação de produto (igual à análise)
+    function classificar(desc){
+      const d=String(desc).toUpperCase();
+      if(/\bESTJ\b|\bKIT\b|\bPMPCK\b|\bCJ\b|\bCONJUNTO\b|\bSET\b/.test(d)) return 'kit';
+      if(/\bEDP\b|\bDES COL\b|\bEAU\b|\bSPL\b|\bSPLSH\b/.test(d)) return 'perfumaria';
+      if(/400ML|400G|350ML|300ML|300G|250ML|250G|GELEIA|LOC DESC|LOC CORP/.test(d)) return 'hidratacao_g';
+      if(/200ML|200G|150ML|150G|\bCREM\b|\bLOC\b|\bHID\b|\bBODY\b/.test(d)) return 'hidratacao_m';
+      if(/\bMAKE\b|\bBASE\b|\bBLUSH\b|\bBAT\b|\bBATOM\b|\bSOMBRA\b|\bPLT\b|\bLAP\b|\bFUND\b/.test(d)) return 'maquiagem';
+      if(/\bDES ANTIT\b|\bANTIT\b|\bAER\b|\bROLL\b/.test(d)) return 'desodorante';
+      if(/\bSAB\b|\bSABONETE\b|\bESF\b|\bGEL\b/.test(d)) return 'higiene';
+      if(/\bSHAMP\b|\bCOND\b|\bMASC CAP\b|\bMATCH\b/.test(d)) return 'cabelos';
+      if(/10ML|7ML|5ML|MINI|AMOSTRA|VIAG/.test(d)) return 'miniatura';
+      return 'outros';
+    }
+    function sacolaCategoria(cat){
+      const m={'kit':'m','perfumaria':'p','hidratacao_g':'m','hidratacao_m':'p','maquiagem':'pp','desodorante':'pp','higiene':'pp','cabelos':'p','miniatura':'pp','outros':'pp'};
+      return m[cat]||'pp';
+    }
 
     lines.slice(1).forEach(line=>{
-      const cols = line.split(sep);
-      const cod  = (cols[codIdx]||'').trim().replace(/\r/g,'');
-      const qtd  = parseFloat((cols[qIdx]||'0').replace(',','.').replace(/\r/g,''))||0;
-      const fat  = fatIdx>=0 ? parseFloat((cols[fatIdx]||'0').replace(',','.').replace(/\r/g,''))||0 : 0;
-      const dt   = (cols[dtIdx]||'').trim().replace(/\r/g,'');
+      const cols=line.split(sep);
+      const cod=(cols[codIdx]||'').trim().replace(/\r/g,'');
+      const qtd=parseFloat((cols[qIdx]||'0').replace(',','.').replace(/\r/g,''))||0;
+      const fat=fatIdx>=0?parseFloat((cols[fatIdx]||'0').replace(',','.').replace(/\r/g,''))||0:0;
+      const dt=(cols[dtIdx]||'').trim().replace(/\r/g,'');
+      const desc=descIdx>=0?(cols[descIdx]||'').trim().replace(/\r/g,''):'';
       if(!cod||!dt) return;
-      const parts = dt.split('/');
-      if(parts.length<3) return;
-      const mes = parts[2].substring(0,4)+'-'+parts[1];
-      if(!ultimos3.includes(mes)) return;
+      const parts=dt.split('/'); if(parts.length<3) return;
+      const mes=parts[2].substring(0,4)+'-'+parts[1];
+      if(!ultimos5.includes(mes)) return;
+      const codShort=cod.replace(/^0+/,'');
 
-      const codShort = cod.replace(/^0+/,'');
-      if(CODIGOS_SET.has(codShort)) {
-        // É embalagem — registrar consumo
-        consumoPorCod[codShort] = (consumoPorCod[codShort]||0)+qtd;
-        resultado.atualizacoes++;
+      if(CODIGOS_SET.has(codShort)){
+        // É embalagem — caixas mantêm bipagem
+        if(['89402','89401','89397'].includes(codShort)){
+          caixasConsumo[codShort]=(caixasConsumo[codShort]||0)+qtd;
+          resultado.atualizacoes++;
+        }
+        // sacolas: não usar bipagem, vêm da correlação
       } else {
-        // É produto — somar faturamento
-        fatPorMes[mes] = (fatPorMes[mes]||0)+fat;
+        // É produto → contagem para mix
+        if(!itensPorMes[mes]) itensPorMes[mes]=0;
+        itensPorMes[mes]+=qtd;
+        const cat=classificar(desc);
+        const sac=sacolaCategoria(cat);
+        if(!sacolasPorMes[sac][mes]) sacolasPorMes[sac][mes]=0;
+        sacolasPorMes[sac][mes]+=qtd;
+        fatPorMes[mes]=(fatPorMes[mes]||0)+fat;
+        resultado.atualizacoes++;
       }
     });
 
-    // Atualizar consumo médio
-    const nMeses = Math.max(1, ultimos3.length);
-    Object.keys(consumoPorCod).forEach(c=>{
-      LOJAS_BASE[loja].consumo[c] = consumoPorCod[c] / nMeses;
+    // Recalibrar MIX_LOJAS com dados reais
+    const mesesValidos=Object.keys(itensPorMes).sort();
+    if(mesesValidos.length>=3){
+      const totPP=mesesValidos.reduce((s,m)=>s+(sacolasPorMes.pp[m]||0),0);
+      const totP =mesesValidos.reduce((s,m)=>s+(sacolasPorMes.p[m]||0),0);
+      const totM =mesesValidos.reduce((s,m)=>s+(sacolasPorMes.m[m]||0),0);
+      const totTot=totPP+totP+totM;
+      if(totTot>0){
+        MIX_LOJAS[loja].pp=Math.round(totPP/totTot*100);
+        MIX_LOJAS[loja].p =Math.round(totP/totTot*100);
+        MIX_LOJAS[loja].m =100-MIX_LOJAS[loja].pp-MIX_LOJAS[loja].p;
+      }
+      // Recalibrar volume base e fator de tendência
+      const volMes=mesesValidos.map(m=>itensPorMes[m]);
+      const n=volMes.length;
+      const metade=Math.floor(n/2);
+      const mediaAnt=volMes.slice(0,metade).reduce((s,v)=>s+v,0)/metade;
+      const mediaRec=volMes.slice(-metade).reduce((s,v)=>s+v,0)/metade;
+      MIX_LOJAS[loja].vol_base=Math.round(volMes.slice(0,-1).reduce((s,v)=>s+v,0)/(n-1));
+      MIX_LOJAS[loja].fator_tend=mediaAnt>0?parseFloat((mediaRec/mediaAnt).toFixed(3)):1;
+      MIX_LOJAS[loja].fonte='Upload '+new Date().toLocaleDateString('pt-BR',{month:'short',year:'2-digit'});
+    }
+
+    // Atualizar consumo de caixas
+    const nMeses=Math.max(1,mesesValidos.length);
+    ['89402','89401','89397'].forEach(cod=>{
+      if(caixasConsumo[cod]) LOJAS_BASE[loja].consumo_caixas[cod]=caixasConsumo[cod]/nMeses;
     });
 
-    // Atualizar faturamento médio e fat por mês
-    const fatVals = Object.values(fatPorMes);
-    if(fatVals.length > 0) {
-      const novoMeta = fatVals.reduce((s,v)=>s+v,0) / fatVals.length;
-      if(novoMeta > 0) {
-        LOJAS_BASE[loja].meta = novoMeta;
-        // Atualizar fat_jan, fat_fev, fat_mar com os meses detectados
-        const mesesKeys = Object.keys(fatPorMes).sort();
-        if(mesesKeys[0]) LOJAS_BASE[loja].fat_jan = fatPorMes[mesesKeys[0]]||0;
-        if(mesesKeys[1]) LOJAS_BASE[loja].fat_fev = fatPorMes[mesesKeys[1]]||0;
-        if(mesesKeys[2]) LOJAS_BASE[loja].fat_mar = fatPorMes[mesesKeys[2]]||0;
-        resultado.fatMedio = novoMeta;
+    // Atualizar faturamento
+    const fatVals=Object.values(fatPorMes);
+    if(fatVals.length>0){
+      const novoMeta=fatVals.reduce((s,v)=>s+v,0)/fatVals.length;
+      if(novoMeta>0){
+        LOJAS_BASE[loja].meta=novoMeta;
+        const mesesKeys=Object.keys(fatPorMes).sort();
+        if(mesesKeys[0]) LOJAS_BASE[loja].fat_jan=fatPorMes[mesesKeys[0]]||0;
+        if(mesesKeys[1]) LOJAS_BASE[loja].fat_fev=fatPorMes[mesesKeys[1]]||0;
+        if(mesesKeys[2]) LOJAS_BASE[loja].fat_mar=fatPorMes[mesesKeys[2]]||0;
+        resultado.fatMedio=novoMeta;
       }
     }
   }
   return resultado;
 }
 
-function refreshTudo(loja, tipo, resultado) {
-  // Refresh da página ativa
-  const activePage = document.querySelector('.page.active');
-  if(activePage) renderPage(activePage.id.replace('page-',''));
+function processarUpload(loja,tipo,input){
+  const file=input.files[0]; if(!file) return;
+  const zone=input.closest('.upload-zone'); zone.style.opacity='0.5';
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const resultado=parseCSV(e.target.result,loja,tipo);
+      zone.classList.add('loaded'); zone.style.opacity='1';
+      zone.querySelector('.uz-sub').textContent=file.name+' ✓';
+      refreshTudo(loja,tipo,resultado);
+    }catch(err){ zone.style.opacity='1'; showToast('Erro ao processar arquivo',err.message,'error'); }
+  };
+  reader.onerror=()=>{ zone.style.opacity='1'; showToast('Erro ao ler arquivo','','error'); };
+  reader.readAsText(file,'latin1');
+}
 
-  // Montar mensagem de feedback
-  const nomeL = loja ? LOJAS_BASE[loja]?.nome : 'Catálogo';
-  let titulo, sub;
-  if(tipo==='est') {
-    titulo = nomeL + ' — Estoque atualizado';
-    sub = `${resultado.atualizacoes} embalagens processadas · Painel atualizado`;
-  } else if(tipo==='hist') {
-    const meses = resultado.meses?.join(', ')||'';
-    const fat = resultado.fatMedio > 0 ? ` · Meta: R$ ${fmt(resultado.fatMedio)}` : '';
-    titulo = nomeL + ' — Histórico atualizado';
-    sub = `${resultado.linhas?.toLocaleString('pt-BR')} linhas · Meses: ${meses}${fat}`;
+function refreshTudo(loja,tipo,resultado){
+  const activePage=document.querySelector('.page.active');
+  if(activePage) renderPage(activePage.id.replace('page-',''));
+  const nomeL=loja?LOJAS_BASE[loja]?.nome:'Catálogo';
+  let titulo,sub;
+  if(tipo==='est'){
+    titulo=nomeL+' — Estoque atualizado';
+    sub=`${resultado.atualizacoes} itens processados · Pedido recalculado`;
+  } else if(tipo==='hist'){
+    const mx=MIX_LOJAS[loja];
+    titulo=nomeL+' — Mix recalibrado';
+    sub=`PP ${mx.pp}% · P ${mx.p}% · M ${mx.m}% · tend. ×${mx.fator_tend}`;
   } else {
-    titulo = 'Dados atualizados';
-    sub = 'Painel atualizado automaticamente';
+    titulo='Dados atualizados'; sub='Painel atualizado automaticamente';
   }
-  showToast(titulo, sub, 'ok', 5000);
+  showToast(titulo,sub,'ok',5000);
 }
 
 // ============================================================
 // CONFIG
 // ============================================================
 function renderConfig() {
-  document.getElementById('cfg-api-key').value = CONFIG.apiKey;
-  document.getElementById('cfg-lead').value = CONFIG.lead;
-  document.getElementById('cfg-ciclo').value = CONFIG.ciclo;
-  document.getElementById('cfg-cobertura').value = CONFIG.cobertura;
-  document.getElementById('cfg-pct').value = CONFIG.pct;
+  document.getElementById('cfg-api-key').value=CONFIG.apiKey;
+  document.getElementById('cfg-lead').value=CONFIG.lead;
+  document.getElementById('cfg-ciclo').value=CONFIG.ciclo;
+  document.getElementById('cfg-cobertura').value=CONFIG.cobertura;
+  document.getElementById('cfg-pct').value=CONFIG.pct;
 
-  const tbl = document.getElementById('lojas-config-table');
-  tbl.innerHTML = `<table><thead><tr><th>Código</th><th>Nome</th><th>Faturamento médio/mês</th><th>Limite 1%</th><th>Status dados</th></tr></thead><tbody>
+  // Tabela de mix calibrado
+  const mixTbl=document.getElementById('mix-config-table');
+  mixTbl.innerHTML=`<table><thead><tr><th>Loja</th><th>Sacola PP</th><th>Sacola P</th><th>Sacola M</th><th>Vol. base/mês</th><th>Fator tendência</th><th>Fonte</th></tr></thead><tbody>
+    ${Object.entries(MIX_LOJAS).map(([k,mx])=>`<tr>
+      <td><strong>${LOJAS_BASE[k].nome}</strong></td>
+      <td class="mono">${mx.pp}%</td><td class="mono">${mx.p}%</td><td class="mono">${mx.m}%</td>
+      <td class="mono">${fmt(mx.vol_base)} itens</td>
+      <td class="mono">×${mx.fator_tend}</td>
+      <td><span class="badge corr" style="font-size:10px">${mx.fonte}</span></td>
+    </tr>`).join('')}
+  </tbody></table>`;
+
+  const tbl=document.getElementById('lojas-config-table');
+  tbl.innerHTML=`<table><thead><tr><th>Código</th><th>Nome</th><th>Fat. médio/mês</th><th>Limite 1%</th><th>Status</th></tr></thead><tbody>
     ${Object.entries(LOJAS_BASE).map(([k,l])=>`<tr>
       <td class="mono">${k}</td><td>${l.nome}</td>
       <td class="mono">R$ ${fmt(l.meta)}</td>
@@ -1528,68 +1461,59 @@ function renderConfig() {
     </tr>`).join('')}
   </tbody></table>`;
 }
-function salvarConfig() {
-  CONFIG.apiKey = document.getElementById('cfg-api-key').value;
-  CONFIG.lead   = parseInt(document.getElementById('cfg-lead').value)||10;
-  CONFIG.ciclo  = parseInt(document.getElementById('cfg-ciclo').value)||30;
-  CONFIG.cobertura = CONFIG.lead + CONFIG.ciclo;
-  CONFIG.pct    = parseFloat(document.getElementById('cfg-pct').value)||1;
-  document.getElementById('cfg-cobertura').value = CONFIG.cobertura;
+
+function salvarConfig(){
+  CONFIG.apiKey=document.getElementById('cfg-api-key').value;
+  CONFIG.lead=parseInt(document.getElementById('cfg-lead').value)||10;
+  CONFIG.ciclo=parseInt(document.getElementById('cfg-ciclo').value)||30;
+  CONFIG.cobertura=CONFIG.lead+CONFIG.ciclo;
+  CONFIG.pct=parseFloat(document.getElementById('cfg-pct').value)||1;
+  document.getElementById('cfg-cobertura').value=CONFIG.cobertura;
   updateAPIStatus();
 }
-function updateAPIStatus() {
-  const dot = document.getElementById('api-dot');
-  const txt = document.getElementById('api-status-text');
-  if(CONFIG.apiKey && CONFIG.apiKey.startsWith('sk-ant-')) {
-    dot.classList.add('connected'); txt.textContent = 'API conectada';
+function updateAPIStatus(){
+  const dot=document.getElementById('api-dot');
+  const txt=document.getElementById('api-status-text');
+  if(CONFIG.apiKey&&CONFIG.apiKey.startsWith('sk-ant-')){
+    dot.classList.add('connected');txt.textContent='API conectada';
   } else {
-    dot.classList.remove('connected'); txt.textContent = 'API não configurada';
+    dot.classList.remove('connected');txt.textContent='API não configurada';
   }
 }
-async function testarAPI() {
-  if(!CONFIG.apiKey){ showToast('API não configurada', 'Insira sua chave em Configurações', 'warn'); return; }
-  try {
-    const r = await chamarGemini('Responda apenas: "API funcionando corretamente."');
-    showToast('API funcionando', r, 'ok');
+async function testarAPI(){
+  if(!CONFIG.apiKey){showToast('API não configurada','Insira sua chave em Configurações','warn');return;}
+  try{
+    const r=await chamarClaude('Responda apenas: "API funcionando corretamente."');
+    showToast('API funcionando',r,'ok');
     document.getElementById('api-dot').classList.add('connected');
-    document.getElementById('api-status-text').textContent = 'API conectada';
-  } catch(e) { showToast('Erro na API', e.message, 'error'); }
+    document.getElementById('api-status-text').textContent='API conectada';
+  }catch(e){showToast('Erro na API',e.message,'error');}
 }
 
 // ============================================================
-// GEMINI API
+// CLAUDE API
 // ============================================================
-async function chamarGemini(prompt) {
-  const key = CONFIG.apiKey;
+async function chamarClaude(prompt){
+  const key=CONFIG.apiKey;
   if(!key) throw new Error('Chave de API não configurada. Acesse Configurações.');
-  const res = await fetch('https://api.anthropic.com/v1/messages',{
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': key,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-5',
-      max_tokens: 1500,
-      messages: [{ role: 'user', content: prompt }]
-    })
+  const res=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1500,messages:[{role:'user',content:prompt}]})
   });
-  if(!res.ok) { const err=await res.json(); throw new Error(err.error?.message||'Erro na API'); }
-  const data = await res.json();
-  return data.content?.[0]?.text || 'Sem resposta';
+  if(!res.ok){const err=await res.json();throw new Error(err.error?.message||'Erro na API');}
+  const data=await res.json();
+  return data.content?.[0]?.text||'Sem resposta';
 }
 
-function setAILoading(elId) {
-  const el = document.getElementById(elId);
-  if(el) el.innerHTML = `<div class="ai-thinking"><span></span><span></span><span></span></div> Analisando dados...`;
+function setAILoading(elId){
+  const el=document.getElementById(elId);
+  if(el) el.innerHTML=`<div class="ai-thinking"><span></span><span></span><span></span></div> Analisando dados...`;
 }
 
-async function rodarAnaliseIA() {
-  const activePage = document.querySelector('.page.active').id.replace('page-','');
-  if(!CONFIG.apiKey){ showToast('API não configurada', 'Insira sua chave em Configurações', 'warn'); showPage('config', document.querySelector('.nav-item:last-of-type')); return; }
-
+async function rodarAnaliseIA(){
+  const activePage=document.querySelector('.page.active').id.replace('page-','');
+  if(!CONFIG.apiKey){showToast('API não configurada','Insira sua chave em Configurações','warn');return;}
   if(activePage==='dashboard'||activePage==='consolidado') await analisarConsolidadoIA();
   else if(activePage==='pedido') await analisarPedidoIA();
   else if(activePage==='bipagem') await analisarBipagemIA();
@@ -1598,193 +1522,203 @@ async function rodarAnaliseIA() {
   else if(activePage==='clique') await analisarCliqueIA();
 }
 
-async function analisarConsolidadoIA() {
-  setAILoading('ai-dashboard-text');
-  setAILoading('ai-consolidado-text');
-  const total_fat = Object.values(LOJAS_BASE).reduce((s,l)=>s+l.meta,0);
-  const total_ped = calcTotalPedidoFranquia();
-  const resumo = Object.entries(LOJAS_BASE).map(([k,l])=>{
-    const {totalVal} = calcPedidoLoja(k);
-    const bipHist = BIPAGEM_HIST[k];
-    const bipUlt = bipHist[bipHist.length-1];
-    const negCount = Object.values(l.estoque).filter(v=>v<0).length;
-    return `Loja ${k}: fat/mês R$${fmt(l.meta)}, pedido R$${fmt(totalVal)} (${(totalVal/l.meta*100).toFixed(1)}% fat), saldos negativos: ${negCount}, bipagem último mês: ${(bipUlt.b/bipUlt.i*100).toFixed(1)}%`;
+async function analisarConsolidadoIA(){
+  setAILoading('ai-dashboard-text'); setAILoading('ai-consolidado-text');
+  const total_fat=Object.values(LOJAS_BASE).reduce((s,l)=>s+l.meta,0);
+  const total_ped=calcTotalPedidoFranquia();
+  const resumo=Object.entries(LOJAS_BASE).map(([k,l])=>{
+    const {totalVal}=calcPedidoLoja(k);
+    const mx=MIX_LOJAS[k];
+    const negCount=Object.values(l.estoque).filter(v=>v<0).length;
+    return `Loja ${k}: fat/mês R$${fmt(l.meta)}, pedido R$${fmt(totalVal)} (${(totalVal/l.meta*100).toFixed(1)}% fat), mix PP${mx.pp}%/P${mx.p}%/M${mx.m}%, tend.×${mx.fator_tend}, saldos negativos: ${negCount}`;
   }).join('\n');
-
-  const prompt = `Você é um analista de gestão de franquias O Boticário. Analise os dados abaixo e forneça insights objetivos em português.
-
-CONTEXTO: Franquia com 8 lojas. Embalagens = sacolas (PP,P,M,G) e caixas de presente (P,M,G). Limite: 1% do faturamento/mês. Lead time 10 dias, compra mensal.
+  const prompt=`Você é analista de gestão de franquias O Boticário. Motor de compra: correlação produto×embalagem (mix calibrado por loja) + fator de tendência de vendas. Bipagem não entra no pedido — é só acompanhamento.
 
 DADOS CONSOLIDADOS:
-Faturamento total franquia/mês: R$ ${fmt(total_fat)}
-Limite total embalagens: R$ ${fmt(total_fat*0.01)}
-Pedido total sugerido: R$ ${fmt(total_ped)}
+Faturamento total: R$ ${fmt(total_fat)}/mês | Limite 1%: R$ ${fmt(total_fat*0.01)} | Pedido total: R$ ${fmt(total_ped)}
 
-SITUAÇÃO POR LOJA:
+POR LOJA:
 ${resumo}
 
-Forneça:
-1. Avaliação geral da saúde do estoque de embalagens
-2. Quais lojas merecem atenção imediata e por quê
-3. Comparativo de performance entre lojas (bipagem, controle de estoque)
+Analise:
+1. Saúde geral do pedido vs orçamento
+2. Lojas com maior risco (saldo negativo, pedido acima do limite)
+3. Variações de mix entre lojas e o que isso indica sobre o perfil de cada uma
 4. 3 recomendações práticas prioritárias
-Seja direto e objetivo. Use no máximo 300 palavras.`;
-
-  try {
-    const r = await chamarGemini(prompt);
-    document.getElementById('ai-dashboard-text').textContent = r;
-    document.getElementById('ai-consolidado-text').textContent = r;
-  } catch(e) {
-    document.getElementById('ai-dashboard-text').textContent = 'Erro: '+e.message;
-    document.getElementById('ai-consolidado-text').textContent = 'Erro: '+e.message;
+Máximo 300 palavras.`;
+  try{
+    const r=await chamarClaude(prompt);
+    document.getElementById('ai-dashboard-text').textContent=r;
+    document.getElementById('ai-consolidado-text').textContent=r;
+  }catch(e){
+    document.getElementById('ai-dashboard-text').textContent='Erro: '+e.message;
+    document.getElementById('ai-consolidado-text').textContent='Erro: '+e.message;
   }
 }
 
-async function analisarPedidoIA() {
+async function analisarPedidoIA(){
   setAILoading('ai-pedido-text');
-  const l = LOJAS_BASE[lojaAtiva];
-  const {rows, totalVal, limite} = calcPedidoLoja(lojaAtiva);
-  const itensPedido = rows.map(r=>`${r.desc}: ${r.qtdReal} unid (${r.modulos} módulos) = R$${r.valor.toFixed(2)}, estoque atual: ${r.est}, consumo médio: ${r.cons.toFixed(0)}/mês`).join('\n');
-  const prompt = `Você é especialista em gestão de embalagens para franquias de cosméticos. Analise o pedido sugerido abaixo e forneça justificativa clara.
+  const l=LOJAS_BASE[lojaAtiva];
+  const {rows,totalVal,limite}=calcPedidoLoja(lojaAtiva);
+  const mx=MIX_LOJAS[lojaAtiva];
+  const volPrev=Math.round(mx.vol_base*mx.fator_tend);
+  const itensPedido=rows.map(r=>`${r.desc}: ${r.qtdReal} unid (${r.fonte}), estoque ${r.est}, consumo ${r.cons.toFixed(0)}/mês, R$${r.valor.toFixed(2)}`).join('\n');
+  const prompt=`Especialista em embalagens de franquia O Boticário. Motor: correlação produto×embalagem.
 
 LOJA: ${l.nome}
-Faturamento médio: R$ ${fmt(l.meta)}
-Limite 1%: R$ ${fmt(limite)}
-Total pedido: R$ ${fmt(totalVal)} (${(totalVal/limite*100).toFixed(1)}% do limite)
-Lead time: ${CONFIG.lead} dias | Ciclo compra: ${CONFIG.ciclo} dias | Cobertura: ${CONFIG.cobertura} dias
+Mix calibrado: PP ${mx.pp}% · P ${mx.p}% · M ${mx.m}%
+Volume previsto: ${fmt(volPrev)} itens/mês (base ${fmt(mx.vol_base)} × tend. ×${mx.fator_tend})
+Fat. médio: R$ ${fmt(l.meta)} | Limite 1%: R$ ${fmt(limite)} | Pedido: R$ ${fmt(totalVal)} (${(totalVal/limite*100).toFixed(1)}%)
+Cobertura: ${CONFIG.cobertura} dias (lead ${CONFIG.lead}d + ciclo ${CONFIG.ciclo}d)
 
 ITENS DO PEDIDO:
 ${itensPedido}
 
-EMBALAGENS NÃO INCLUÍDAS (sem bipagem ou estoque suficiente):
-${CATALOGO.filter(e=>!rows.find(r=>r.cod===e.cod)).map(e=>`${e.desc}: estoque ${l.estoque[e.cod]||0}, consumo ${(l.consumo[e.cod]||0).toFixed(0)}/mês`).join('\n')}
-
 Explique:
-1. Por que cada item foi incluído no pedido (lógica de cobertura)
-2. Por que os demais foram excluídos
-3. Se o pedido está bem calibrado ou se há ajustes recomendados
+1. Lógica do pedido de sacolas (correlação + tendência)
+2. Por que as caixas foram incluídas/excluídas
+3. Se o pedido está bem calibrado ou recomenda ajustes
 4. Alertas específicos desta loja
-Seja objetivo, máximo 250 palavras.`;
-  try {
-    document.getElementById('ai-pedido-text').textContent = await chamarGemini(prompt);
-  } catch(e) { document.getElementById('ai-pedido-text').textContent = 'Erro: '+e.message; }
+Máximo 250 palavras.`;
+  try{ document.getElementById('ai-pedido-text').textContent=await chamarClaude(prompt); }
+  catch(e){ document.getElementById('ai-pedido-text').textContent='Erro: '+e.message; }
 }
 
-async function analisarBipagemIA() {
+async function analisarBipagemIA(){
   setAILoading('ai-bipagem-text');
-  const hist = BIPAGEM_HIST[lojaAtiva];
-  const resumo = hist.map(h=>`${h.m}: ${h.i} itens vendidos, ${h.b} bipagens (${(h.b/h.i*100).toFixed(1)}%)`).join('\n');
-  const prompt = `Você é especialista em gestão de processos em franquias de cosméticos. Analise o histórico de bipagem de embalagens abaixo.
+  const hist=BIPAGEM_HIST[lojaAtiva];
+  const resumo=hist.map(h=>`${h.m}: ${h.i} itens, ${h.b} bipagens (${(h.b/h.i*100).toFixed(1)}%)`).join('\n');
+  const prompt=`Especialista em processos de franquias. A bipagem não entra mais no pedido — é métrica de cultura e controle interno.
 
 LOJA: ${LOJAS_BASE[lojaAtiva].nome}
-CONTEXTO: Bipagem = registro de saída de embalagem no momento da venda. A cultura de registro está sendo implantada.
-
 HISTÓRICO (13 meses):
 ${resumo}
 
 Analise:
-1. Tendência e velocidade de melhora da bipagem
-2. Se o ritmo atual é satisfatório ou preocupante
-3. Em quanto tempo, nesse ritmo, a loja atingirá 80% de bipagem
-4. 3 ações práticas para acelerar a adoção
-5. Comparação: está melhor ou pior que o esperado para esta fase de implantação?
+1. Tendência e velocidade de melhora
+2. Em quanto tempo, nesse ritmo, a loja atingirá 80%
+3. 3 ações práticas para acelerar a adoção
+4. Valor da bipagem como ferramenta de auditoria do modelo de correlação
 Máximo 250 palavras.`;
-  try {
-    document.getElementById('ai-bipagem-text').textContent = await chamarGemini(prompt);
-  } catch(e) { document.getElementById('ai-bipagem-text').textContent = 'Erro: '+e.message; }
+  try{ document.getElementById('ai-bipagem-text').textContent=await chamarClaude(prompt); }
+  catch(e){ document.getElementById('ai-bipagem-text').textContent='Erro: '+e.message; }
 }
 
-async function analisarEstoqueIA() {
+async function analisarEstoqueIA(){
   setAILoading('ai-estoque-text');
-  const l = LOJAS_BASE[lojaAtiva];
-  const itens = CATALOGO.map(e=>{
-    const est = l.estoque[e.cod]||0;
-    const cons = l.consumo[e.cod]||0;
-    const cob = cons>0?Math.round(est/cons*30):null;
-    return `${e.desc} (${e.cod}): estoque ${est}, consumo ${cons.toFixed(0)}/mês, cobertura ${cob?cob+' dias':'sem dados de bipagem'}`;
+  const l=LOJAS_BASE[lojaAtiva];
+  const corrSacolas=calcConsumoCorrelacao(lojaAtiva);
+  const itens=CATALOGO.map(e=>{
+    const est=l.estoque[e.cod]||0;
+    let cons=0;
+    if(['90819','90821','90822'].includes(e.cod)) cons=corrSacolas[e.cod]||0;
+    else if(e.cod!=='90823') cons=l.consumo_caixas[e.cod]||0;
+    const cob=cons>0?Math.round(est/cons*30):null;
+    return `${e.desc}: estoque ${est}, consumo ${cons.toFixed(0)}/mês, cobertura ${cob?cob+' dias':'—'}`;
   }).join('\n');
-  const prompt = `Você é especialista em gestão de estoques em franquias de cosméticos. Analise a posição de estoque abaixo.
+  const prompt=`Especialista em estoques de franquias. Motor de sacolas: correlação produto×embalagem.
 
 LOJA: ${LOJAS_BASE[lojaAtiva].nome}
-PARÂMETROS: Lead time ${CONFIG.lead} dias, ciclo compra ${CONFIG.ciclo} dias, cobertura ideal ${CONFIG.cobertura} dias
+Parâmetros: lead ${CONFIG.lead}d, ciclo ${CONFIG.ciclo}d, cobertura ideal ${CONFIG.cobertura}d
 
 ESTOQUE ATUAL:
 ${itens}
 
 Analise:
-1. Quais itens têm estoque crítico (abaixo da cobertura mínima)
-2. Quais têm estoque excessivo (acima de 3x a cobertura)
-3. Saldos negativos: causa provável e como corrigir
-4. Recomendação sobre caixas de presente (giro lento)
-5. Ação imediata prioritária
+1. Itens com estoque crítico (abaixo da cobertura mínima)
+2. Itens com estoque excessivo
+3. Saldos negativos: causa provável e correção
+4. Ação imediata prioritária
 Máximo 200 palavras.`;
-  try {
-    document.getElementById('ai-estoque-text').textContent = await chamarGemini(prompt);
-  } catch(e) { document.getElementById('ai-estoque-text').textContent = 'Erro: '+e.message; }
+  try{ document.getElementById('ai-estoque-text').textContent=await chamarClaude(prompt); }
+  catch(e){ document.getElementById('ai-estoque-text').textContent='Erro: '+e.message; }
 }
 
-async function analisarSazonaisIA() {
+async function analisarSazonaisIA(){
   setAILoading('ai-sazonal-text');
-  const fat_total = Object.values(LOJAS_BASE).reduce((s,l)=>s+l.meta,0);
-  const detalhes = DATAS_SAZ.map(d=>{
-    const fat = parseFloat(document.getElementById('saz-fat-'+d.key).value)||0;
-    const cresc = parseFloat(document.getElementById('saz-cresc-'+d.key).value)||0;
-    const est = parseFloat(document.getElementById('saz-est-'+d.key).value)||0;
-    return `${d.label} (${d.data}): faturamento esperado R$${fmt(fat)}, crescimento ${cresc}%, estoque sazonais disponível: ${est} unid`;
+  const fat_total=Object.values(LOJAS_BASE).reduce((s,l)=>s+l.meta,0);
+  const detalhes=DATAS_SAZ.map(d=>{
+    const fat=parseFloat(document.getElementById('saz-fat-'+d.key).value)||0;
+    const cresc=parseFloat(document.getElementById('saz-cresc-'+d.key).value)||0;
+    const est=parseFloat(document.getElementById('saz-est-'+d.key).value)||0;
+    return `${d.label} (${d.data}): R$${fmt(fat)}, cresc ${cresc}%, estoque sazonais: ${est} unid`;
   }).join('\n');
-  const prompt = `Você é especialista em planejamento sazonal para franquias de cosméticos. Analise o planejamento de datas comemorativas.
+  const prompt=`Especialista em planejamento sazonal para franquias de cosméticos. Embalagens sazonais não são reaproveitadas — sobra é perda.
 
-FRANQUIA: 8 lojas, faturamento médio R$ ${fmt(fat_total)}/mês
-EMBALAGENS SAZONAIS: personalizadas por data (sem reaproveitamento — sobra é perda)
-
+FRANQUIA: 8 lojas, R$ ${fmt(fat_total)}/mês
 PLANEJAMENTO:
 ${detalhes}
 
 Para cada data:
-1. Avalie se a estimativa de faturamento é realista dado o histórico
-2. Qual o maior risco (falta ou sobra) e como mitigar
-3. Quando fazer o pedido (considerando lead time de 10 dias)
-4. Alerta especial para Natal (maior risco de sobra)
+1. Realismo da estimativa de faturamento
+2. Maior risco (falta ou sobra) e como mitigar
+3. Quando fazer o pedido (lead time 10 dias)
+4. Alerta especial para Natal
 Máximo 300 palavras.`;
-  try {
-    document.getElementById('ai-sazonal-text').textContent = await chamarGemini(prompt);
-  } catch(e) { document.getElementById('ai-sazonal-text').textContent = 'Erro: '+e.message; }
+  try{ document.getElementById('ai-sazonal-text').textContent=await chamarClaude(prompt); }
+  catch(e){ document.getElementById('ai-sazonal-text').textContent='Erro: '+e.message; }
+}
+
+async function analisarCliqueIA(){
+  setAILoading('ai-clique-text');
+  const c=CLIQUE_BASE[lojaAtiva];
+  const l=LOJAS_BASE[lojaAtiva];
+  const corrSacolas=calcConsumoCorrelacao(lojaAtiva);
+  const mapa={pp:'Sacola PP',p:'Sacola P',m:'Sacola M',g:'Sacola G',caixaP:'Caixa P',caixaM:'Caixa M',caixaG:'Caixa G'};
+  const detalhe=Object.entries(mapa).map(([k,desc])=>c[k]>0?`${desc}: ~${c[k]} unid/mês`:'').filter(Boolean).join(', ');
+  const consCorr=Object.values(corrSacolas).reduce((s,v)=>s+v,0);
+  const consCliq=Object.values(consumoCliqueTotal(lojaAtiva)).reduce((s,v)=>s+v,0);
+  const prompt=`Especialista em embalagens de franquia. Canal Clique e Retire: pedidos feitos no site, retirados na loja.
+
+LOJA: ${l.nome}
+C&R/mês: ${detalhe} (total ~${consCliq} emb)
+Correlação produto×emb: ~${consCorr} sacolas/mês
+C&R representa ${consCorr>0?(consCliq/(consCorr+consCliq)*100).toFixed(0):100}% do consumo
+
+Analise impacto do C&R, quais embalagens são mais afetadas, e se a frequência de atualização dos dados está adequada. Máximo 200 palavras.`;
+  try{ document.getElementById('ai-clique-text').textContent=await chamarClaude(prompt); }
+  catch(e){ document.getElementById('ai-clique-text').textContent='Erro: '+e.message; }
 }
 
 // ============================================================
 // EXPORT
 // ============================================================
-function exportarPedido() {
-  const {rows} = calcPedidoLoja(lojaAtiva);
-  let csv = 'Código;Descrição;Qtd Sugerida;Módulos;Valor Total\n';
-  rows.forEach(r=>{ csv+=`${r.cod};${r.desc};${r.qtdReal};${r.modulos};${r.valor.toFixed(2)}\n`; });
-  baixarCSV(csv, `pedido-${lojaAtiva}-abril-2026.csv`);
+function exportarPedido(){
+  const {rows}=calcPedidoLoja(lojaAtiva);
+  let csv='Código;Descrição;Fonte;Consumo/mês;Qtd Sugerida;Módulos;Valor Total\n';
+  rows.forEach(r=>{csv+=`${r.cod};${r.desc};${r.fonte};${r.cons.toFixed(0)};${r.qtdReal};${r.modulos};${r.valor.toFixed(2)}\n`;});
+  baixarCSV(csv,`pedido-${lojaAtiva}-${new Date().toLocaleDateString('pt-BR').replace(/\//g,'-')}.csv`);
 }
-function exportarConsolidado() {
-  let csv = 'Loja;Fat Médio;Limite 1%;Pedido Sugerido;% Limite\n';
+function exportarConsolidado(){
+  let csv='Loja;Fat Médio;Limite 1%;Pedido Sugerido;% Limite;Mix PP;Mix P;Mix M\n';
   Object.entries(LOJAS_BASE).forEach(([k,l])=>{
-    const {totalVal} = calcPedidoLoja(k);
-    csv+=`${k};${l.meta.toFixed(0)};${(l.meta*0.01).toFixed(0)};${totalVal.toFixed(0)};${(totalVal/l.meta*100).toFixed(1)}\n`;
+    const {totalVal}=calcPedidoLoja(k); const mx=MIX_LOJAS[k];
+    csv+=`${k};${l.meta.toFixed(0)};${(l.meta*0.01).toFixed(0)};${totalVal.toFixed(0)};${(totalVal/l.meta*100).toFixed(1)};${mx.pp}%;${mx.p}%;${mx.m}%\n`;
   });
-  baixarCSV(csv,'consolidado-embalagens-abril-2026.csv');
+  baixarCSV(csv,'consolidado-embalagens.csv');
 }
-function baixarCSV(csv, nome) {
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));
-  a.download = nome; a.click();
+function baixarCSV(csv,nome){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));
+  a.download=nome; a.click();
 }
 
 // ============================================================
 // HELPERS
 // ============================================================
-function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
-function pct(a,b) { if(!b) return ''; const p=((a-b)/b*100); return (p>=0?'+':'')+p.toFixed(1)+'%'; }
-function calcTotalPedidoFranquia() { return Object.keys(LOJAS_BASE).reduce((s,k)=>s+calcPedidoLoja(k).totalVal,0); }
-function calcBipagemMedia() {
-  const vals = Object.keys(BIPAGEM_HIST).map(k=>{
-    const hist=BIPAGEM_HIST[k]; const ult=hist[hist.length-1]; return ult.b/ult.i*100;
-  });
-  return vals.reduce((s,v)=>s+v,0)/vals.length;
+function fmt(n){ return Math.round(n).toLocaleString('pt-BR'); }
+function pct(a,b){ if(!b) return ''; const p=((a-b)/b*100); return (p>=0?'+':'')+p.toFixed(1)+'%'; }
+
+function showToast(title,sub='',type='ok',duration=4000){
+  const toast=document.getElementById('toast');
+  const icons={ok:'✓',error:'✕',warn:'⚠',info:'ℹ'};
+  document.getElementById('toast-icon').textContent=icons[type]||'✓';
+  document.getElementById('toast-title').textContent=title;
+  document.getElementById('toast-sub').textContent=sub;
+  toast.className='toast '+(type!=='ok'?type:'');
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer=setTimeout(()=>toast.classList.remove('show'),duration);
 }
 
 // ============================================================
