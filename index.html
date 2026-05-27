@@ -203,6 +203,21 @@ tr:hover td { background: var(--surface2); }
 .toast .toast-body .toast-title { font-weight:700; margin-bottom:2px; }
 .toast .toast-body .toast-sub { font-size:12px; opacity:.85; }
 
+/* UPLOAD ESTOQUE GLOBAL */
+.estoque-global-zone {
+  border: 2px dashed var(--border2); border-radius: 12px; padding: 28px 24px;
+  text-align: center; cursor: pointer; transition: all .2s; position: relative;
+  background: var(--surface); max-width: 480px;
+}
+.estoque-global-zone:hover { border-color: var(--accent); background: var(--accent-light); }
+.estoque-global-zone.loaded { border-style: solid; border-color: #a8d5b5; background: var(--ok-light); }
+.estoque-global-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.estoque-global-zone .egz-icon { font-size: 32px; margin-bottom: 10px; }
+.estoque-global-zone .egz-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.estoque-global-zone .egz-sub { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+.estoque-preview { margin-top: 16px; display: none; }
+.estoque-preview.visible { display: block; }
+
 @media(max-width:900px){ .app{grid-template-columns:1fr} .sidebar{display:none} }
 </style>
 </head>
@@ -456,11 +471,40 @@ tr:hover td { background: var(--surface2); }
 
     <!-- UPLOAD -->
     <div id="page-upload" class="page">
-      <div class="alert info"><div class="alert-icon">ℹ</div><div><div class="alert-title">Ciclos de atualização</div><div class="alert-body">Faça upload do relatório ABC de vendas mensalmente para recalibrar o mix e o volume de cada loja. O estoque deve ser inserido no momento da compra para garantir precisão no pedido.</div></div></div>
+      <div class="alert info"><div class="alert-icon">ℹ</div><div><div class="alert-title">Ciclos de atualização</div><div class="alert-body">Faça upload do relatório ABC de vendas mensalmente para recalibrar o mix e o volume de cada loja. O estoque pode agora ser inserido em um único arquivo para todas as lojas.</div></div></div>
+
+      <!-- ESTOQUE GLOBAL -->
+      <div class="card" style="margin-bottom:20px;">
+        <div class="card-header">
+          <h3>📦 Estoque — todas as lojas</h3>
+          <span class="badge info" style="font-size:11px;">Novo formato ERP</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+            Exporte do ERP com <strong>todas as lojas no mesmo arquivo</strong>. O sistema detecta automaticamente a loja pela coluna <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--surface2);padding:2px 6px;border-radius:4px;">Loja</span> e atualiza os saldos usando <span style="font-family:'DM Mono',monospace;font-size:11px;background:var(--surface2);padding:2px 6px;border-radius:4px;">Estoque Final</span>.
+          </p>
+          <div class="estoque-global-zone" id="estoque-global-zone">
+            <input type="file" accept=".csv" onchange="processarEstoqueGlobal(this)">
+            <div class="egz-icon">📊</div>
+            <div class="egz-title">posicao-estoque-todas-lojas.csv</div>
+            <div class="egz-sub" id="estoque-global-sub">Arraste ou clique para selecionar</div>
+          </div>
+          <div class="estoque-preview" id="estoque-preview">
+            <table style="margin-top:12px;">
+              <thead><tr><th>Loja</th><th>Itens atualizados</th><th>Status</th></tr></thead>
+              <tbody id="estoque-preview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABC VENDAS POR LOJA -->
       <div class="card">
-        <div class="card-header"><h3>Upload por loja</h3></div>
+        <div class="card-header"><h3>📊 Relatório ABC de Vendas — por loja</h3></div>
         <div class="card-body" id="upload-body"></div>
       </div>
+
+      <!-- CATÁLOGO -->
       <div class="card">
         <div class="card-header"><h3>Catálogo de embalagens</h3><span class="badge ok">Carregado</span></div>
         <div class="card-body">
@@ -542,9 +586,6 @@ const CATALOGO = [
 
 // ============================================================
 // MIX CALIBRADO POR LOJA
-// Fonte: análise do relatório ABC de vendas jan–mai/2026
-// PP/P/M = % do volume de itens vendidos que gera cada sacola
-// Fator de tendência = crescimento recente vs período anterior
 // ============================================================
 const MIX_LOJAS = {
   '6696':  { pp:33, p:50, m:17, vol_base:10363, fator_tend:1.206, fonte:'Histórico jan–mai/26' },
@@ -557,22 +598,14 @@ const MIX_LOJAS = {
   '18682': { pp:31, p:52, m:17, vol_base:4890,  fator_tend:1.258, fonte:'Histórico jan–mai/26' },
 };
 
-// Mapa código sacola → chave mix
-const COD_SACOLA_MIX = { '90819':'pp', '90821':'p', '90822':'m' };
-
-// ============================================================
-// CALCULAR CONSUMO POR CORRELAÇÃO
-// Retorna consumo mensal estimado de PP, P, M para cada loja
-// Fórmula: vol_base × fator_tendência × mix%
-// ============================================================
 function calcConsumoCorrelacao(lojaId) {
   const mx = MIX_LOJAS[lojaId];
   if (!mx) return { '90819':0, '90821':0, '90822':0 };
   const vol = mx.vol_base * mx.fator_tend;
   return {
-    '90819': Math.round(vol * mx.pp / 100),  // Sacola PP
-    '90821': Math.round(vol * mx.p  / 100),  // Sacola P
-    '90822': Math.round(vol * mx.m  / 100),  // Sacola M
+    '90819': Math.round(vol * mx.pp / 100),
+    '90821': Math.round(vol * mx.p  / 100),
+    '90822': Math.round(vol * mx.m  / 100),
   };
 }
 
@@ -606,7 +639,6 @@ const LOJAS_BASE = {
              consumo_caixas:{'89402':63.7,'89401':106.7,'89397':0} },
 };
 
-// Histórico de bipagem (mantido como métrica de acompanhamento)
 const BIPAGEM_HIST = {
   '6696':  [{m:'mar/25',i:5498,b:0},{m:'abr/25',i:5312,b:0},{m:'mai/25',i:8103,b:0},{m:'jun/25',i:6198,b:12},{m:'jul/25',i:5621,b:28},{m:'ago/25',i:6843,b:47},{m:'set/25',i:5934,b:89},{m:'out/25',i:5756,b:134},{m:'nov/25',i:7321,b:198},{m:'dez/25',i:11203,b:312},{m:'jan/26',i:4987,b:243},{m:'fev/26',i:4312,b:198},{m:'mar/26',i:5634,b:287}],
   '7253':  [{m:'mar/25',i:1021,b:0},{m:'abr/25',i:987,b:0},{m:'mai/25',i:1534,b:0},{m:'jun/25',i:1123,b:0},{m:'jul/25',i:1187,b:0},{m:'ago/25',i:1234,b:0},{m:'set/25',i:1198,b:0},{m:'out/25',i:3053,b:0},{m:'nov/25',i:3251,b:4},{m:'dez/25',i:4769,b:8},{m:'jan/26',i:2050,b:6},{m:'fev/26',i:1613,b:23},{m:'mar/26',i:1965,b:105}],
@@ -618,7 +650,6 @@ const BIPAGEM_HIST = {
   '18682': [{m:'mar/25',i:1987,b:0},{m:'abr/25',i:1834,b:0},{m:'mai/25',i:3012,b:0},{m:'jun/25',i:2434,b:0},{m:'jul/25',i:2098,b:12},{m:'ago/25',i:2187,b:34},{m:'set/25',i:1765,b:78},{m:'out/25',i:2345,b:134},{m:'nov/25',i:2567,b:198},{m:'dez/25',i:4198,b:289},{m:'jan/26',i:1934,b:198},{m:'fev/26',i:1987,b:234},{m:'mar/26',i:2567,b:312}],
 };
 
-// Clique e Retire
 const CLIQUE_BASE = {
   '6696':  { pp:54, p:90, m:66, g:48, caixaP:0, caixaM:0, caixaG:0, cupons_mes:258, atualizado:'abr/26' },
   '7253':  { pp:0, p:0, m:0, g:0, caixaP:0, caixaM:0, caixaG:0, cupons_mes:0, atualizado:'—' },
@@ -640,7 +671,6 @@ function consumoCliqueTotal(loja) {
   return result;
 }
 
-// CONFIG
 let CONFIG = { apiKey:'', lead:10, ciclo:30, cobertura:40, pct:1 };
 let lojaAtiva = '6696';
 
@@ -686,15 +716,13 @@ function renderLojaTabs(containerId, activeId, onClickFn) {
 }
 
 // ============================================================
-// MOTOR DE PEDIDO — NOVO
-// Sacolas PP/P/M: correlação produto×embalagem + Clique e Retire
-// Caixas P/M/G: consumo_caixas (bipagem histórica)
+// MOTOR DE PEDIDO
 // ============================================================
 function calcPedidoLoja(k) {
   const l = LOJAS_BASE[k];
   const limite = l.meta * (CONFIG.pct / 100);
-  const corrSacolas = calcConsumoCorrelacao(k);   // PP, P, M via correlação
-  const clique = consumoCliqueTotal(k);            // Clique e Retire por código
+  const corrSacolas = calcConsumoCorrelacao(k);
+  const clique = consumoCliqueTotal(k);
   const rows = [];
   let totalVal = 0;
 
@@ -705,14 +733,11 @@ function calcPedidoLoja(k) {
     let consCliq = clique[e.cod] || 0;
 
     if (e.tipo === 'sacola' && ['90819','90821','90822'].includes(e.cod)) {
-      // SACOLAS PP/P/M → correlação + C&R
       cons   = (corrSacolas[e.cod] || 0) + consCliq;
       fonte  = 'correlação';
     } else if (e.cod === '90823') {
-      // SACOLA G → excluída do pedido automático (baixo giro)
-      return;
+      return; // Sacola G excluída
     } else {
-      // CAIXAS → consumo histórico (bipagem) + C&R
       cons  = (l.consumo_caixas[e.cod] || 0) + consCliq;
       fonte = 'bipagem';
     }
@@ -897,7 +922,7 @@ function renderPedidoLoja(k) {
 }
 
 // ============================================================
-// BIPAGEM (acompanhamento)
+// BIPAGEM
 // ============================================================
 function renderBipagem() {
   renderLojaTabs('bipagem-loja-tabs', lojaAtiva, 'setBipagemLoja');
@@ -1205,7 +1230,7 @@ function renderUpload() {
   const body = document.getElementById('upload-body');
   body.innerHTML = `
     <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-      Faça upload do <strong>relatório ABC de vendas</strong> para recalibrar o mix e volume de cada loja, e do <strong>estoque atual</strong> no momento da compra.
+      Faça upload do <strong>relatório ABC de vendas</strong> para recalibrar o mix e volume de cada loja.
     </p>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
     ${Object.entries(LOJAS_BASE).map(([k,l])=>`
@@ -1216,14 +1241,151 @@ function renderUpload() {
           <div class="uz-title" style="font-size:12px;">📊 ABC Vendas</div>
           <div class="uz-sub">relatorioABCVenda.csv ✓</div>
         </div>
-        <div style="height:8px"></div>
-        <div class="upload-zone loaded" style="padding:12px;text-align:left;">
-          <input type="file" accept=".csv" onchange="processarUpload('${k}','est',this)">
-          <div class="uz-title" style="font-size:12px;">📦 Estoque</div>
-          <div class="uz-sub">posicao-estoque-${k}.csv ✓</div>
-        </div>
       </div>`).join('')}
     </div>`;
+}
+
+// ============================================================
+// UPLOAD ESTOQUE GLOBAL — NOVO FORMATO ERP
+// Colunas: Loja;Produto;Und;Estoque Inicial;Entrada;Saida;Estoque Final;Custo;Total
+// Produto: "00000000089397 - CX PRESENTE G..."
+// ============================================================
+function processarEstoqueGlobal(input) {
+  const file = input.files[0]; if(!file) return;
+  const zone = document.getElementById('estoque-global-zone');
+  zone.style.opacity = '0.5';
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const resultado = parseEstoqueGlobal(e.target.result);
+      zone.classList.add('loaded');
+      zone.style.opacity = '1';
+      document.getElementById('estoque-global-sub').textContent =
+        file.name + ' ✓ — ' + resultado.totalLinhas + ' itens · ' + resultado.lojasAtualizadas.length + ' lojas';
+
+      // Mostrar preview por loja
+      const preview = document.getElementById('estoque-preview');
+      preview.classList.add('visible');
+      const tbody = document.getElementById('estoque-preview-tbody');
+      tbody.innerHTML = resultado.lojasAtualizadas.map(r =>
+        `<tr>
+          <td><strong>${LOJAS_BASE[r.loja]?.nome || r.loja}</strong></td>
+          <td class="mono">${r.itens} embalagens</td>
+          <td><span class="badge ok">✓ Atualizado</span></td>
+        </tr>`
+      ).join('');
+
+      // Refresh da tela ativa
+      const activePage = document.querySelector('.page.active');
+      if(activePage) renderPage(activePage.id.replace('page-',''));
+
+      showToast(
+        'Estoque atualizado — ' + resultado.lojasAtualizadas.length + ' lojas',
+        resultado.lojasAtualizadas.map(r => r.loja + ' (' + r.itens + ' itens)').join(' · '),
+        'ok', 6000
+      );
+    } catch(err) {
+      zone.style.opacity = '1';
+      showToast('Erro ao processar estoque', err.message, 'error');
+    }
+  };
+  reader.onerror = () => { zone.style.opacity='1'; showToast('Erro ao ler arquivo','','error'); };
+  reader.readAsText(file, 'latin1');
+}
+
+function parseEstoqueGlobal(text) {
+  const lines = text.split('\n').filter(l => l.trim());
+  if(lines.length < 2) throw new Error('Arquivo vazio ou sem dados');
+
+  const sep = lines[0].includes(';') ? ';' : ',';
+  const headers = lines[0].split(sep).map(h => h.trim().replace(/\r/g,'').toLowerCase());
+
+  // Detectar índices — formato novo ERP
+  const lojaIdx    = headers.findIndex(h => h === 'loja');
+  const prodIdx    = headers.findIndex(h => h === 'produto');
+  const estFinalIdx= headers.findIndex(h => h.includes('estoque final'));
+
+  // Retrocompatibilidade com formato antigo (sem coluna Loja, com Saldo Atual)
+  const saldoAtualIdx = headers.findIndex(h => h.includes('saldo atual'));
+  const formatoNovo = lojaIdx >= 0 && estFinalIdx >= 0;
+  const formatoAntigo = prodIdx >= 0 && saldoAtualIdx >= 0;
+
+  if(!formatoNovo && !formatoAntigo) {
+    throw new Error(
+      'Formato não reconhecido. Esperado: colunas "Loja", "Produto" e "Estoque Final" (novo ERP) ' +
+      'ou "Produto" e "Saldo Atual" (formato anterior).'
+    );
+  }
+
+  const CODIGOS_SET = new Set(['89397','89401','89402','90819','90821','90822','90823']);
+
+  // Acumular por loja
+  const contadorPorLoja = {}; // loja → nº de itens atualizados
+
+  lines.slice(1).forEach(line => {
+    const cols = line.split(sep);
+
+    // Extrair loja
+    let loja;
+    if(formatoNovo) {
+      loja = (cols[lojaIdx] || '').trim().replace(/\r/g,'');
+    } else {
+      // formato antigo: loja não está no arquivo — ignoramos (não aplica aqui)
+      return;
+    }
+
+    if(!loja || !LOJAS_BASE[loja]) return; // loja não cadastrada
+
+    // Extrair código do produto — novo formato: "00000000089397 - CX PRESENTE G..."
+    const prodRaw = (cols[prodIdx] || '').trim().replace(/\r/g,'');
+    let cod;
+    if(prodRaw.includes(' - ')) {
+      // Pegar a parte antes do " - " e remover zeros à esquerda
+      cod = prodRaw.split(' - ')[0].trim().replace(/^0+/, '');
+    } else {
+      // Fallback: tentar usar direto
+      cod = prodRaw.replace(/^0+/, '');
+    }
+
+    if(!CODIGOS_SET.has(cod)) return; // não é embalagem que gerenciamos
+
+    // Extrair saldo
+    const saldoRaw = formatoNovo
+      ? (cols[estFinalIdx] || '0')
+      : (cols[saldoAtualIdx] || '0');
+    const saldo = parseFloat(saldoRaw.replace(',','.').replace(/\r/g,'')) || 0;
+
+    // Atualizar estoque
+    LOJAS_BASE[loja].estoque[cod] = saldo;
+
+    if(!contadorPorLoja[loja]) contadorPorLoja[loja] = 0;
+    contadorPorLoja[loja]++;
+  });
+
+  const lojasAtualizadas = Object.entries(contadorPorLoja).map(([loja, itens]) => ({ loja, itens }));
+  if(lojasAtualizadas.length === 0) throw new Error('Nenhuma loja reconhecida no arquivo. Verifique a coluna "Loja".');
+
+  return {
+    totalLinhas: lines.length - 1,
+    lojasAtualizadas
+  };
+}
+
+// Upload individual de ABC vendas (mantido)
+function processarUpload(loja, tipo, input) {
+  const file = input.files[0]; if(!file) return;
+  const zone = input.closest('.upload-zone'); zone.style.opacity = '0.5';
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const resultado = parseCSV(e.target.result, loja, tipo);
+      zone.classList.add('loaded'); zone.style.opacity = '1';
+      zone.querySelector('.uz-sub').textContent = file.name + ' ✓';
+      refreshTudo(loja, tipo, resultado);
+    } catch(err) { zone.style.opacity = '1'; showToast('Erro ao processar arquivo', err.message, 'error'); }
+  };
+  reader.onerror = () => { zone.style.opacity='1'; showToast('Erro ao ler arquivo','','error'); };
+  reader.readAsText(file, 'latin1');
 }
 
 function uploadCatalogo(input){
@@ -1249,7 +1411,7 @@ function parseCatalogo(text){
   });
 }
 
-function parseCSV(text, loja, tipo){
+function parseCSV(text, loja, tipo) {
   const lines=text.split('\n').filter(l=>l.trim());
   if(lines.length<2) throw new Error('Arquivo vazio ou sem dados');
   const sep=lines[0].includes(';')?';':',';
@@ -1257,21 +1419,7 @@ function parseCSV(text, loja, tipo){
   const CODIGOS_SET=new Set(['89397','89401','89402','90819','90821','90822','90823']);
   const resultado={loja,tipo,linhas:lines.length-1,atualizacoes:0,meses:[],fatMedio:0};
 
-  if(tipo==='est'){
-    const codIdx=headers.findIndex(h=>h.toLowerCase().includes('produto'));
-    const saldoIdx=headers.findIndex(h=>h.toLowerCase().includes('saldo atual'));
-    if(codIdx<0||saldoIdx<0) throw new Error('Colunas "Produto" e "Saldo Atual" não encontradas');
-    lines.slice(1).forEach(line=>{
-      const cols=line.split(sep);
-      if(!cols[codIdx]) return;
-      const cod=cols[codIdx].trim().replace(/\r/g,'').replace(/^0+/,'');
-      const saldo=parseFloat((cols[saldoIdx]||'0').replace(',','.').replace(/\r/g,''));
-      if(CODIGOS_SET.has(cod)){LOJAS_BASE[loja].estoque[cod]=saldo;resultado.atualizacoes++;}
-    });
-  }
-
   if(tipo==='hist'){
-    // Upload do ABC de vendas → recalibra mix e volume da loja
     const codIdx=headers.findIndex(h=>h==='Código'||h==='Codigo'||h.toLowerCase()==='código');
     const qIdx=headers.findIndex(h=>h==='Quantidade'||h.toLowerCase()==='quantidade');
     const dtIdx=headers.findIndex(h=>h==='Quebra'||h.toLowerCase()==='quebra');
@@ -1291,13 +1439,11 @@ function parseCSV(text, loja, tipo){
     const ultimos5=mesesOrdenados.slice(-5);
     resultado.meses=ultimos5;
 
-    // Contagem de itens por mês (excluindo embalagens) para recalibrar mix
     const itensPorMes={};
     const sacolasPorMes={pp:{},p:{},m:{}};
     const fatPorMes={};
     const caixasConsumo={};
 
-    // Classificação de produto (igual à análise)
     function classificar(desc){
       const d=String(desc).toUpperCase();
       if(/\bESTJ\b|\bKIT\b|\bPMPCK\b|\bCJ\b|\bCONJUNTO\b|\bSET\b/.test(d)) return 'kit';
@@ -1330,14 +1476,11 @@ function parseCSV(text, loja, tipo){
       const codShort=cod.replace(/^0+/,'');
 
       if(CODIGOS_SET.has(codShort)){
-        // É embalagem — caixas mantêm bipagem
         if(['89402','89401','89397'].includes(codShort)){
           caixasConsumo[codShort]=(caixasConsumo[codShort]||0)+qtd;
           resultado.atualizacoes++;
         }
-        // sacolas: não usar bipagem, vêm da correlação
       } else {
-        // É produto → contagem para mix
         if(!itensPorMes[mes]) itensPorMes[mes]=0;
         itensPorMes[mes]+=qtd;
         const cat=classificar(desc);
@@ -1349,7 +1492,6 @@ function parseCSV(text, loja, tipo){
       }
     });
 
-    // Recalibrar MIX_LOJAS com dados reais
     const mesesValidos=Object.keys(itensPorMes).sort();
     if(mesesValidos.length>=3){
       const totPP=mesesValidos.reduce((s,m)=>s+(sacolasPorMes.pp[m]||0),0);
@@ -1361,7 +1503,6 @@ function parseCSV(text, loja, tipo){
         MIX_LOJAS[loja].p =Math.round(totP/totTot*100);
         MIX_LOJAS[loja].m =100-MIX_LOJAS[loja].pp-MIX_LOJAS[loja].p;
       }
-      // Recalibrar volume base e fator de tendência
       const volMes=mesesValidos.map(m=>itensPorMes[m]);
       const n=volMes.length;
       const metade=Math.floor(n/2);
@@ -1372,13 +1513,11 @@ function parseCSV(text, loja, tipo){
       MIX_LOJAS[loja].fonte='Upload '+new Date().toLocaleDateString('pt-BR',{month:'short',year:'2-digit'});
     }
 
-    // Atualizar consumo de caixas
     const nMeses=Math.max(1,mesesValidos.length);
     ['89402','89401','89397'].forEach(cod=>{
       if(caixasConsumo[cod]) LOJAS_BASE[loja].consumo_caixas[cod]=caixasConsumo[cod]/nMeses;
     });
 
-    // Atualizar faturamento
     const fatVals=Object.values(fatPorMes);
     if(fatVals.length>0){
       const novoMeta=fatVals.reduce((s,v)=>s+v,0)/fatVals.length;
@@ -1395,38 +1534,19 @@ function parseCSV(text, loja, tipo){
   return resultado;
 }
 
-function processarUpload(loja,tipo,input){
-  const file=input.files[0]; if(!file) return;
-  const zone=input.closest('.upload-zone'); zone.style.opacity='0.5';
-  const reader=new FileReader();
-  reader.onload=e=>{
-    try{
-      const resultado=parseCSV(e.target.result,loja,tipo);
-      zone.classList.add('loaded'); zone.style.opacity='1';
-      zone.querySelector('.uz-sub').textContent=file.name+' ✓';
-      refreshTudo(loja,tipo,resultado);
-    }catch(err){ zone.style.opacity='1'; showToast('Erro ao processar arquivo',err.message,'error'); }
-  };
-  reader.onerror=()=>{ zone.style.opacity='1'; showToast('Erro ao ler arquivo','','error'); };
-  reader.readAsText(file,'latin1');
-}
-
-function refreshTudo(loja,tipo,resultado){
-  const activePage=document.querySelector('.page.active');
+function refreshTudo(loja, tipo, resultado) {
+  const activePage = document.querySelector('.page.active');
   if(activePage) renderPage(activePage.id.replace('page-',''));
-  const nomeL=loja?LOJAS_BASE[loja]?.nome:'Catálogo';
-  let titulo,sub;
-  if(tipo==='est'){
-    titulo=nomeL+' — Estoque atualizado';
-    sub=`${resultado.atualizacoes} itens processados · Pedido recalculado`;
-  } else if(tipo==='hist'){
-    const mx=MIX_LOJAS[loja];
-    titulo=nomeL+' — Mix recalibrado';
-    sub=`PP ${mx.pp}% · P ${mx.p}% · M ${mx.m}% · tend. ×${mx.fator_tend}`;
+  const nomeL = loja ? LOJAS_BASE[loja]?.nome : 'Catálogo';
+  let titulo, sub;
+  if(tipo==='hist'){
+    const mx = MIX_LOJAS[loja];
+    titulo = nomeL + ' — Mix recalibrado';
+    sub = `PP ${mx.pp}% · P ${mx.p}% · M ${mx.m}% · tend. ×${mx.fator_tend}`;
   } else {
-    titulo='Dados atualizados'; sub='Painel atualizado automaticamente';
+    titulo = 'Dados atualizados'; sub = 'Painel atualizado automaticamente';
   }
-  showToast(titulo,sub,'ok',5000);
+  showToast(titulo, sub, 'ok', 5000);
 }
 
 // ============================================================
@@ -1439,7 +1559,6 @@ function renderConfig() {
   document.getElementById('cfg-cobertura').value=CONFIG.cobertura;
   document.getElementById('cfg-pct').value=CONFIG.pct;
 
-  // Tabela de mix calibrado
   const mixTbl=document.getElementById('mix-config-table');
   mixTbl.innerHTML=`<table><thead><tr><th>Loja</th><th>Sacola PP</th><th>Sacola P</th><th>Sacola M</th><th>Vol. base/mês</th><th>Fator tendência</th><th>Fonte</th></tr></thead><tbody>
     ${Object.entries(MIX_LOJAS).map(([k,mx])=>`<tr>
